@@ -16,5 +16,8 @@
     <x-nav-item slug="venues">Venues</x-nav-item>
     <x-nav-item slug="agencies">Agencies</x-nav-item>
 </x-navbar>
+<div class="container">
+    @yield('content')
+</div>
 </body>
 </html>
