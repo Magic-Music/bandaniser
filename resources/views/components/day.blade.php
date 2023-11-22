@@ -1,7 +1,7 @@
 @aware(['calendarRowHeight'])
 
 <div class="seven-cols border border-1 border-top-0 {{ $borderRight }} border-opacity-50 border-dark calendar-day">
-    <div>
+    <div class="px-1">
         <strong>{{ $dateNumber }}</strong>
     </div>
     @foreach($gigs as $gig)

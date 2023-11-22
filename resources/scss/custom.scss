@@ -1,20 +1,24 @@
 $theme-colors: (
     "dark": #221b50,
     "light": #dbdbff,
-    "date": #9797da,
+    "date": #dbdbff,
     "gig": #5fc95f,
     "enquiry": #d5d556,
     "available": #d96a5e,
     "rehearsal": #3098ea,
 );
 
-$body-bg: #d6d6ff;
+$body-bg: #dbdbff;
 
 @import "~bootstrap/scss/bootstrap";
 
 .seven-cols {
     width: 14.285714285714285714285714285714%;
     *width: 14.285714285714285714285714285714%;
+}
+
+.btn-white {
+    background-color: #fdfdfd;
 }
 
 .btn-round {

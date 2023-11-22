@@ -2,7 +2,7 @@
     <div class="py-3 h-75">
         <div class="row px-5">
             @for($i = 1; $i < 8; $i++)
-                <div class="seven-cols border border-1 {{ $i < 7 ? 'border-right-0' : '' }} border-dark">
+                <div class="seven-cols px-1 border border-1 {{ $i < 7 ? 'border-right-0' : '' }} border-dark">
                     <div>
                         <strong>{{ $dayFromNumber($i) }}</strong>
                     </div>

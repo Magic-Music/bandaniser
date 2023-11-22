@@ -10,6 +10,7 @@
     </head>
 
     <body class="bg-body d-flex flex-column h-100">
+
         <x-navbar active="home">
             <x-nav-item slug="home">Home</x-nav-item>
             <x-nav-item slug="members">Members</x-nav-item>
@@ -18,8 +19,8 @@
             <x-nav-item slug="agencies">Agencies</x-nav-item>
         </x-navbar>
 
-        <div class="container h-100">
-            <div class="h-100 bg-light">
+        <div class="h-100 w-100">
+            <div class="h-100 w-100 bg-light">
                 @yield('content')
             </div>
         </div>

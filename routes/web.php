@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', CalendarController::class);
+Route::get('/', [CalendarController::class, 'index']);
 
 Route::get('members', function () {
     return view('members');
