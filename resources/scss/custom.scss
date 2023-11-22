@@ -2,6 +2,10 @@ $theme-colors: (
     "dark": #221b50,
     "light": #dbdbff,
     "date": #9797da,
+    "gig": #5fc95f,
+    "enquiry": #d5d556,
+    "available": #d96a5e,
+    "rehearsal": #3098ea,
 );
 
 $body-bg: #d6d6ff;
@@ -16,4 +20,8 @@ $body-bg: #d6d6ff;
 .btn-round {
     aspect-ratio: 3 / 1;
     border-radius: 50%;
+}
+
+.calendar-day {
+    font-size: 0.8rem;
 }

@@ -31,4 +31,19 @@ class Day extends Component
     {
         return $this->day['lastInRow'] ?? null ? '' : 'border-right-0';
     }
+
+    public function gigs(): array
+    {
+        return $this->day['gigs'] ?? [];
+    }
+
+    public function availability(): array
+    {
+        return $this->day['availability'] ?? [];
+    }
+
+    public function rehearsals(): array
+    {
+        return $this->day['rehearsals'] ?? [];
+    }
 }

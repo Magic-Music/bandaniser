@@ -15,6 +15,13 @@ class Venue extends Model
         'phone',
         'email',
         'address',
+        'town',
+        'postcode',
         'note',
     ];
+
+    public function gigs()
+    {
+        return $this->hasMany(Gig::class);
+    }
 }

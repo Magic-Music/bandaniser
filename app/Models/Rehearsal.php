@@ -15,4 +15,8 @@ class Rehearsal extends Model
         'location',
         'note',
     ];
+
+    protected $casts = [
+        'time' => 'datetime:H:i',
+    ];
 }

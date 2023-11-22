@@ -14,4 +14,9 @@ class Availability extends Model
         'date',
         'note',
     ];
+
+    public function member()
+    {
+        return $this->belongsTo(Member::class);
+    }
 }

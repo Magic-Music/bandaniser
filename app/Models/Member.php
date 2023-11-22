@@ -13,4 +13,9 @@ class Member extends Model
         'name',
         'email',
     ];
+
+    public function availability()
+    {
+        return $this->hasMany(Availability::class);
+    }
 }

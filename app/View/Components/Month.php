@@ -21,6 +21,9 @@ class Month extends Component
     public array $calendar;
     public float $calendarRowHeight = 16.66;
     private $date;
+    private array $gigDates = [];
+    private array $availabilityDates =[];
+    private array $rehearsalDates =[];
 
     /**
      * Create a new component instance.
@@ -29,10 +32,12 @@ class Month extends Component
         public int $year,
         public string $month,
         public array $availability = [],
-        public array $gigs = []
+        public array $gigs = [],
+        public array $rehearsals = [],
     )
     {
         $this->date = date_create("{$this->year}-{$this->month}-1");
+        $this->filterDates();
         $this->buildCalendar();
     }
 
@@ -76,9 +81,14 @@ class Month extends Component
             }
 
             if ($dayNumber <= $daysInMonth) {
+                $dateToSearch = "{$this->year}-{$this->month}-$dayNumber";
+
                 $days[] = [
                     'day' => $this->dayFromNumber($cell),
                     'date' => $dayNumber,
+                    'gigs' => $this->gigDates[$dateToSearch] ?? [],
+                    'availability' => $this->availabilityDates[$dateToSearch] ?? [],
+                    'rehearsals' => $this->rehearsalDates[$dateToSearch] ?? [],
                     ...$lastInRow
                 ];
 
@@ -92,7 +102,26 @@ class Month extends Component
                 break;
             }
         }
-
         $this->calendar = $days;
+    }
+
+    private function filterDates()
+    {
+        foreach ($this->gigs as $gig) {
+            $this->gigDates[$gig['date']][] = $gig;
+        }
+
+        foreach ($this->availability as $availability) {
+            $this->availabilityDates[$availability['date']][] = $availability;
+        }
+
+        foreach ($this->rehearsals as $rehearsals) {
+            $this->rehearsalDates[$rehearsals['date']][] = $rehearsals;
+        }
+    }
+
+    private function getGigs($date): array
+    {
+
     }
 }
