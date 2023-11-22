@@ -18,6 +18,8 @@ class Month extends Component
         'Sunday'
     ];
 
+    public array $calendar;
+    public float $calendarRowHeight = 16.66;
     private $date;
 
     /**
@@ -31,6 +33,7 @@ class Month extends Component
     )
     {
         $this->date = date_create("{$this->year}-{$this->month}-1");
+        $this->buildCalendar();
     }
 
     /**
@@ -46,39 +49,6 @@ class Month extends Component
         return date_format($this->date, "F");
     }
 
-    public function calendar(): array
-    {
-        $daysInMonth = date_format($this->date, "t");
-        $startCell = $this->cellNumberFromDay(date_format($this->date, "l"));
-
-        $days = [];
-        $dayNumber = 1;
-        for($cell = 1; $cell < 43; $cell++)
-        {
-            if ($cell < $startCell) {
-                $days[] = [];
-                continue;
-            }
-
-            if ($dayNumber <= $daysInMonth) {
-                $days[] = [
-                    'day' => $this->dayFromNumber($cell),
-                    'date' => $dayNumber,
-                ];
-
-                $dayNumber++;
-            } else {
-                $days[] = [];
-            }
-
-            if ($dayNumber > $daysInMonth && ($cell % 7) == 0) {
-                break;
-            }
-        }
-
-        return $days;
-    }
-
     public function dayFromNumber($dayNumber): string
     {
         return self::DAYS[(($dayNumber - 1) % 7)];
@@ -87,5 +57,42 @@ class Month extends Component
     private function cellNumberFromDay(string $day): int
     {
         return array_search($day, self::DAYS) + 1;
+    }
+
+    private function buildCalendar(): void
+    {
+        $daysInMonth = date_format($this->date, "t");
+        $startCell = $this->cellNumberFromDay(date_format($this->date, "l"));
+
+        $days = [];
+        $dayNumber = 1;
+        for($cell = 1; $cell < 43; $cell++)
+        {
+            $lastInRow = ($cell % 7) == 0 ? ['lastInRow' => true] : [];
+
+            if ($cell < $startCell) {
+                $days[] = [...$lastInRow];
+                continue;
+            }
+
+            if ($dayNumber <= $daysInMonth) {
+                $days[] = [
+                    'day' => $this->dayFromNumber($cell),
+                    'date' => $dayNumber,
+                    ...$lastInRow
+                ];
+
+                $dayNumber++;
+            } else {
+                $days[] = [...$lastInRow];
+            }
+
+            if ($dayNumber > $daysInMonth && ($cell % 7) == 0) {
+                $this->calendarRowHeight = round(100/($cell / 7), 2);
+                break;
+            }
+        }
+
+        $this->calendar = $days;
     }
 }

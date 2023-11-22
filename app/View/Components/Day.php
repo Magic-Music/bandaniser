@@ -26,4 +26,9 @@ class Day extends Component
     {
         return $this->day['day'] ?? ' ';
     }
+
+    public function borderRight()
+    {
+        return $this->day['lastInRow'] ?? null ? '' : 'border-right-0';
+    }
 }
