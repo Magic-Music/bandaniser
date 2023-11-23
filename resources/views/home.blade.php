@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('sidebar')
+    <div class="p-3">
+        Click on a day for event information...
+    </div>
+@endsection
+
 @section('content')
     <div class="lead bg-date py-1 border-bottom border-1 border-dark ">
         <div class="container py-1 px-5">

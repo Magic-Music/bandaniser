@@ -26,7 +26,7 @@
         <div class="flex-grow-1 h-100">
             <div class="d-flex flex-grow-1 flex-row h-100">
                 <div id="event-container" class="w-25 h-100 bg-events border-right border-dark">
-WAAAA
+                    @yield('sidebar')
                 </div>
 
                 <div id="calendar-container" class="d-flex flex-column flex-grow-1 h-100">
