@@ -7,6 +7,7 @@ export class Calendar {
         axios.get(`/api/calendar/${year}/${month}`)
             .then(function (response) {
                 elUpdate('calendar', response.data)
+                events.showEvents(0)
             })
     }
 

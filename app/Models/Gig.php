@@ -20,6 +20,8 @@ class Gig extends Model
         'agency_id',
         'member_id',
         'date',
+        'price',
+        'confirmed',
         'arrival',
         'soundcheck_finish',
         'sets',

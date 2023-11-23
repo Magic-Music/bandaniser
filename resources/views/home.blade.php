@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('sidebar')
-    <div class="p-3">
+    <div id="events" class="p-3">
         Click on a day for event information...
     </div>
 @endsection
 
 @section('content')
     <div class="lead bg-date py-1 border-bottom border-1 border-dark ">
-        <div class="container py-1 px-5">
+        <div class="container py-1 text-center">
             <select id="year" onchange="calendar.getCalendar(elValue('year'), elValue('month'))">
                 @for($y = $year - 2; $y < $year + 4; $y++)
                     <option value="{{ $y }}" {{ $y == $year ? 'selected' : '' }}>
