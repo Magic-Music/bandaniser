@@ -1,6 +1,6 @@
 @aware(['calendarRowHeight'])
 
-<div class="seven-cols border border-1 border-top-0 {{ $borderRight }} border-opacity-50 border-dark calendar-day">
+<div class="border border-1 border-top-0 {{ $borderRight }} border-opacity-50 border-dark calendar-day h-100" style="flex: 1 1 0; ">
     <div class="px-1">
         <strong>{{ $dateNumber }}</strong>
     </div>

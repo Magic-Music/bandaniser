@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 
 class CalendarController extends Controller
 {
-    public function index(Request $request, DateAggregationService $dateAggregationService)
+    public function __construct(private DateAggregationService $dateAggregationService)
+    {}
+
+    public function index(Request $request)
     {
-        $dates = $dateAggregationService->getAggregatedDateData(
+        $dates = $this->dateAggregationService->getAggregatedEventData(
             $request->year ?? date('Y'),
             $request->month ?? date('m')
         );
@@ -17,13 +20,23 @@ class CalendarController extends Controller
         return view('home', $dates);
     }
 
-    public function getCalendar(Request $request, DateAggregationService $dateAggregationService)
+    public function getCalendar(Request $request)
     {
-        $dates = $dateAggregationService->getAggregatedDateData(
+        $dates = $this->dateAggregationService->getAggregatedEventData(
             $request->year ?? date('Y'),
             $request->month ?? date('m')
         );
 
         return view('layouts.calendar', $dates);
+    }
+
+    public function getEvents(Request $request)
+    {
+        $dates = $this->dateAggregationService->getAggregatedDateData(
+            $request->year ?? date('Y'),
+            $request->month ?? date('m')
+        );
+
+        return $dates;
     }
 }

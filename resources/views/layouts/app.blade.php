@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-100">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-100 w-100">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +7,13 @@
         @vite(['resources/scss/app.scss', 'resources/js/app.js'])
 
         <title>Bandaniser</title>
+
+        <script>
+            @yield('script')
+        </script>
     </head>
 
-    <body class="bg-body d-flex flex-column h-100">
+    <body class="bg-body vh-100 w-100 d-flex flex-column">
 
         <x-navbar active="home">
             <x-nav-item slug="home">Home</x-nav-item>
@@ -19,10 +23,17 @@
             <x-nav-item slug="agencies">Agencies</x-nav-item>
         </x-navbar>
 
-        <div class="h-100 w-100">
-            <div class="h-100 w-100 bg-light">
-                @yield('content')
+        <div class="flex-grow-1 h-100">
+            <div class="d-flex flex-grow-1 flex-row h-100">
+                <div id="event-container" class="w-25 h-100 bg-events border-right border-dark">
+WAAAA
+                </div>
+
+                <div id="calendar-container" class="d-flex flex-column flex-grow-1 h-100">
+                    @yield('content')
+                </div>
             </div>
         </div>
+
     </body>
 </html>

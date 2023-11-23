@@ -98,7 +98,7 @@ class Month extends Component
             }
 
             if ($dayNumber > $daysInMonth && ($cell % 7) == 0) {
-                $this->calendarRowHeight = round(100/($cell / 7), 2);
+                $this->calendarRowHeight = round(90/($cell / 7), 2);
                 break;
             }
         }
@@ -115,13 +115,8 @@ class Month extends Component
             $this->availabilityDates[$availability['date']][] = $availability;
         }
 
-        foreach ($this->rehearsals as $rehearsals) {
-            $this->rehearsalDates[$rehearsals['date']][] = $rehearsals;
+        foreach ($this->rehearsals as $rehearsal) {
+            $this->rehearsalDates[$rehearsal['date']][] = $rehearsal;
         }
-    }
-
-    private function getGigs($date): array
-    {
-
     }
 }

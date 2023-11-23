@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="lead bg-date py-1 border-bottom border-1 border-dark w-100">
+    <div class="lead bg-date py-1 border-bottom border-1 border-dark ">
         <div class="container py-1 px-5">
             <select id="year" onchange="calendar.getCalendar(elValue('year'), elValue('month'))">
                 @for($y = $year - 2; $y < $year + 4; $y++)
@@ -22,7 +22,13 @@
             </select>
         </div>
     </div>
-    <div class="h-100" id="calendar">
+    <div class="h-100 flex-grow-1" id="calendar">
         <x-month :$year :$month :$gigs :$availability :$rehearsals/>
     </div>
+@endsection
+
+@section('script')
+    window.onload = () => {
+        calendar.storeEvents({{ $year }}, {{ $month }})
+    }
 @endsection

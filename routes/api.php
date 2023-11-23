@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/calendar/{year}/{month}', [CalendarController::class, 'getCalendar']);
+Route::get('/events/{year}/{month}', [CalendarController::class, 'getEvents']);

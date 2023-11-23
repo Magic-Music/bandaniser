@@ -14,7 +14,8 @@ class Navbar extends Component
         public ?string $active = '',
     )
     {
-        $this->bandName = Band::first()?->name ?: 'Bandaniser';
+        $bandName = Band::first()?->name ?: null;
+        $this->bandName = 'Bandaniser' . ($bandName ? " - $bandName" : '');
     }
 
     public function render(): View|Closure|string
