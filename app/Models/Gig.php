@@ -23,9 +23,6 @@ class Gig extends Model
         'price',
         'confirmed',
         'arrival',
-        'soundcheck_finish',
-        'sets',
-        'set_times',
         'note',
     ];
 

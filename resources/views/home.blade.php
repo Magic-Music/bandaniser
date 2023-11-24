@@ -31,6 +31,7 @@
     <div class="h-100 flex-grow-1" id="calendar">
         <x-month :$year :$month :$gigs :$availability :$rehearsals/>
     </div>
+    <x-create-modal />
 @endsection
 
 @section('script')

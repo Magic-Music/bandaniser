@@ -8,3 +8,11 @@ window.calendar = new Calendar
 
 import {Events} from './events'
 window.events = new Events
+
+import {Create} from "./create";
+window.create = new Create
+
+import.meta.glob([
+    '../images/**',
+    '../fonts/**',
+]);

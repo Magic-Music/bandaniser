@@ -17,10 +17,9 @@ return new class extends Migration
             $table->foreignId('agency_id')->nullable()->constrained();
             $table->foreignId('member_id')->constrained();
             $table->date('date');
+            $table->integer('price')->nullable();
+            $table->boolean('confirmed');
             $table->time('arrival');
-            $table->time('soundcheck_finish')->nullable();
-            $table->time('sets')->nullable();
-            $table->string('set_times')->nullable();
             $table->string('note')->nullable();
             $table->timestamps();
         });

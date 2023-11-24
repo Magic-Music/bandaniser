@@ -1,10 +1,23 @@
 export class Events {
     showEvents(date) {
         let events = calendar.getEvents(date)
+        let html = this.getGigs(events.gigs)
+            + this.getRehearsals(events.rehearsals)
+            + this.getAvailability(events.availability)
 
+        elUpdate('events', html || 'Click on a day for event information...')
+
+        getByClass('selected-day').forEach((element) => {
+            removeClass(element.id, 'selected-day')
+        })
+
+        addClass("date_" + date, 'selected-day')
+    }
+
+    getGigs(gigs) {
         let html = ''
 
-        events.gigs.forEach((gig) => {
+        gigs.forEach((gig) => {
             html += `<div class="card">
                         <div class="card-header ${gig.confirmed ? 'bg-gig' : 'bg-enquiry'}">
                             ${gig.confirmed ? 'Gig' : 'Enquiry'} - ${gig.venue.name}
@@ -22,7 +35,13 @@ export class Events {
                     </div>`
         })
 
-        events.rehearsals.forEach((rehearsal) => {
+        return html
+    }
+
+    getRehearsals(rehearsals) {
+        let html = ''
+
+        rehearsals.forEach((rehearsal) => {
             html += `<div class="card">
                         <div class="card-header bg-rehearsal">
                              Rehearsal - ${rehearsal.time}
@@ -34,20 +53,26 @@ export class Events {
                     </div>`
         })
 
-        if (events.availability.length > 0) {
+        return html
+    }
+
+    getAvailability(availability) {
+        let html =''
+
+        if (availability.length > 0) {
             html += `<div class="card">
                         <div class="card-header bg-available">
                              Not Available
                         </div>
                         <div class="card-body">`
 
-            events.availability.forEach((person) => {
+            availability.forEach((person) => {
                 html += `${person.member.name}<br>
-                         ${person.note ? '<i>(' + person.note + ')</i><br><br>': ''}`
+                         ${person.note ? '<i>(' + person.note + ')</i><br><br>' : ''}`
             })
             html += '</div></div>'
         }
 
-        elUpdate('events', html || 'Click on a day for event information...')
+        return html
     }
 }
