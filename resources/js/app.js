@@ -14,5 +14,4 @@ window.create = new Create
 
 import.meta.glob([
     '../images/**',
-    '../fonts/**',
 ]);
