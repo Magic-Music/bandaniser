@@ -11,6 +11,9 @@ class DateAggregationService
 {
     private int $year;
     private int $month;
+    private ?array $gigs = null;
+    private ?array $rehearsals = null;
+    private ?array $availability = null;
 
     public function getAggregatedEventData(int $year, int $month): array
     {
@@ -52,6 +55,12 @@ class DateAggregationService
         return $dates;
     }
 
+    public function getDateParts(string $date): array
+    {
+        $parts = explode('-', $date);
+        return [(int)$parts[0], (int)$parts[1], (int)$parts[2]];
+    }
+
     private function getDayFromDate(string $date): string
     {
         return explode('-', $date)[2];
@@ -59,27 +68,39 @@ class DateAggregationService
 
     private function getGigs(): array
     {
-        return Gig::whereYear('date', '=', $this->year)
-            ->whereMonth('date', '=', $this->month)
-            ->with('venue')
-            ->get()
-            ->toArray();
+        if (!$this->gigs) {
+            $this->gigs = Gig::whereYear('date', '=', $this->year)
+                ->whereMonth('date', '=', $this->month)
+                ->with('venue')
+                ->get()
+                ->toArray();
+        }
+
+        return $this->gigs;
     }
 
     private function getAvailability(): array
     {
-        return Availability::whereYear('date', '=', $this->year)
-            ->whereMonth('date', '=', $this->month)
-            ->with('member')
-            ->get()
-            ->toArray();
+        if (!$this->availability) {
+            $this->availability = Availability::whereYear('date', '=', $this->year)
+                ->whereMonth('date', '=', $this->month)
+                ->with('member')
+                ->get()
+                ->toArray();
+        }
+
+        return $this->availability;
     }
 
     private function getRehearsals(): array
     {
-        return Rehearsal::whereYear('date', '=', $this->year)
-            ->whereMonth('date', '=', $this->month)
-            ->get()
-            ->toArray();
+        if (!$this->rehearsals) {
+            $this->rehearsals = Rehearsal::whereYear('date', '=', $this->year)
+                ->whereMonth('date', '=', $this->month)
+                ->get()
+                ->toArray();
+        }
+
+        return $this->rehearsals;
     }
 }

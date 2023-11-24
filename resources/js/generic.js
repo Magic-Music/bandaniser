@@ -29,11 +29,3 @@ window.show = (element) => {
 window.hide = (element) => {
     addClass(element, "d-none")
 }
-
-window.formatDate = (input) => {
-    var datePart = input.match(/\d+/g),
-        year = datePart[0].substring(2),
-        month = datePart[1], day = datePart[2];
-
-    return day+'/'+month+'/'+year;
-}

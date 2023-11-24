@@ -65,10 +65,10 @@
                 </div>
 
                 <div id="create_rehearsal" class="d-none py-2 create-event-form">
-                    <form id="create_rehearsal_form" onsubmit="create.createRehearsal(); return false;">
+                    <form id="create_rehearsal_form" onsubmit="event.preventDefault(); create.createRehearsal(); return false;">
                         <div class="form-group">
                             <label for="create_start">Start Time</label>
-                            <input type="time" id="create_arrival" name="create_arrival" placeholder="e.g. 19:00" class="form-control" required>
+                            <input type="time" id="create_start" name="create_start" placeholder="e.g. 19:00" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="create_location">Location</label>

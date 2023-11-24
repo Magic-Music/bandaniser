@@ -26,11 +26,8 @@ export class Events {
                             ${gig.venue.address}, ${gig.venue.town}, ${gig.venue.postcode}<br><br>
                             Fee: £${gig.price || 'unknown'}<br>
                             Arrival time: ${gig.arrival}<br>
-                            Soundcheck by time: ${gig.soundcheck_finish}<br>
-                            Number of sets: ${gig.sets}<br>
-                            Set times: ${gig.set_times}<br>
                             ${gig.agency ? 'Agency: ' + gig.agency.name + '<br>': ''}
-                            Notes: ${gig.note}
+                            ${gig.note ? 'Notes: ' + gig.note : ''}
                         </div>
                     </div>`
         })

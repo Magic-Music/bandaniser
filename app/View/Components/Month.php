@@ -81,7 +81,8 @@ class Month extends Component
             }
 
             if ($dayNumber <= $daysInMonth) {
-                $dateToSearch = "{$this->year}-{$this->month}-$dayNumber";
+                $formattedDay = $dayNumber < 10 ? "0$dayNumber" : $dayNumber;
+                $dateToSearch = "{$this->year}-{$this->month}-$formattedDay";
 
                 $days[] = [
                     'day' => $this->dayFromNumber($cell),

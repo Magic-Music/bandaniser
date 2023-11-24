@@ -18,11 +18,17 @@ export class Calendar {
             })
     }
 
-    getEvents(date){
+    storeEventData(data) {
+        this.calendarEvents = data
+    }
+
+    getEvents(day){
+        let formattedDay = day < 10 ? `0${day}` : day
         let events = {}
-        events['gigs'] = (this.calendarEvents.gigs[date]) || []
-        events['availability'] = (this.calendarEvents.availability[date]) || []
-        events['rehearsals'] = (this.calendarEvents.rehearsals[date]) || []
+
+        events['gigs'] = (this.calendarEvents.gigs[formattedDay]) || []
+        events['availability'] = (this.calendarEvents.availability[formattedDay]) || []
+        events['rehearsals'] = (this.calendarEvents.rehearsals[formattedDay]) || []
 
         return events
     }

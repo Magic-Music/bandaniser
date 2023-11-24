@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\RehearsalController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/calendar/{year}/{month}', [CalendarController::class, 'getCalendar']);
 Route::get('/events/{year}/{month}', [CalendarController::class, 'getEvents']);
+
+Route::post('/rehearsal/create', [RehearsalController::class, 'create']);
