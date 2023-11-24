@@ -12,6 +12,9 @@ window.events = new Events
 import {Create} from "./create";
 window.create = new Create
 
+import {Member} from "./member";
+window.member = new Member
+
 import.meta.glob([
     '../images/**',
 ]);
