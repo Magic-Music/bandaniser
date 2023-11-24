@@ -17,7 +17,7 @@
                 </div>
 
                 <div id="create_gig" class="d-none py-2 create-event-form">
-                    <form id="create_gig_form" onsubmit="create.createGig(); return false;">
+                    <form id="create_gig_form" onsubmit="event.preventDefault(); create.createGig(); return false;">
                         <div class="form-group">
                             <label for="create_venue">Venue</label>
                             <select id="create_venue" class="form-control">
@@ -51,7 +51,7 @@
                 </div>
 
                 <div id="create_availability" class="d-none py-2 create-event-form">
-                    <form id="create_availability_form" onsubmit="create.createAvailability(); return false;">
+                    <form id="create_availability_form" onsubmit="event.preventDefault(); create.createAvailability(); return false;">
                         <div class="form-group">
                             <label for="create_length">Not available for how many days?</label>
                             <input type="number" id="create_length" name="create_length" class="form-control" value="1" required>

@@ -27,16 +27,18 @@ export class Create {
 
         axios.post(`/api/gig/create`, this.getFormValues('gig'))
             .then((response) => {
-                this.updateCalendar(response)
+                this.updateCalendar(response.data)
             })
     }
 
     createAvailability() {
         $('#createModal').modal('hide')
 
-        axios.post(`/api/availability/create`, this.getFormValues('availability'))
+        let formData = this.getFormValues('availability')
+        formData['member_id'] = member.memberId
+        axios.post(`/api/availability/create`, formData)
             .then((response) => {
-                this.updateCalendar(response)
+                this.updateCalendar(response.data)
             })
     }
 
