@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Availability;
+use App\Models\Gig;
 use App\Services\DateAggregationService;
 use Illuminate\Http\Request;
 
-class AvailabilityController extends Controller
+class GigController extends Controller
 {
     public function __construct(private DateAggregationService $dateAggregationService)
     {}
@@ -14,17 +14,16 @@ class AvailabilityController extends Controller
     public function create(Request $request)
     {
         $date = $request->input('date');
-        $note = $request->input('create_availability_note');
-        $numberOfDays = $request->input('create_length');
 
-        for ($i = 0; $i < $numberOfDays; $i++) {
-            $dateToAdd = date('Y-m-d', strtotime($date . " + $i days"));
-            Availability::create([
-                'member_id' => $request->input('member_id'),
-                'date' => $dateToAdd,
-                'note' => $note,
-            ]);
-        }
+        Gig::create([
+            'venue_id' => $request->input('create_venue'),
+            'agency_id' => $request->input('create_agency') ?: null,
+            'date' => $date,
+            'price' => $request->input('create_price'),
+            'confirmed' => $request->boolean('create_confirmed'),
+            'arrival' => $request->input('create_arrival'),
+            'note' => $request->input('create_gig_note'),
+        ]);
 
         $responseData = $this->dateAggregationService->getAllAggregatedData($date);
 

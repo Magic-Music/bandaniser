@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AvailabilityController;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\GigController;
 use App\Http\Controllers\RehearsalController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,3 +23,4 @@ Route::get('/events/{year}/{month}', [CalendarController::class, 'getEvents']);
 
 Route::post('/availability/create', [AvailabilityController::class, 'create']);
 Route::post('/rehearsal/create', [RehearsalController::class, 'create']);
+Route::post('/gig/create', [GigController::class, 'create']);

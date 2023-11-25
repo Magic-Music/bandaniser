@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('venue_id')->constrained();
             $table->foreignId('agency_id')->nullable()->constrained();
-            $table->foreignId('member_id')->constrained();
             $table->date('date');
             $table->integer('price')->nullable();
             $table->boolean('confirmed');

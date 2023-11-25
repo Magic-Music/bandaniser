@@ -20,14 +20,19 @@
                     <form id="create_gig_form" onsubmit="event.preventDefault(); create.createGig(); return false;">
                         <div class="form-group">
                             <label for="create_venue">Venue</label>
-                            <select id="create_venue" class="form-control">
-                                <option>Arden</option>
+                            <select id="create_venue" name="create_venue" class="form-control">
+                                @foreach ($venues as $id=>$venue)
+                                    <option value="{{ $id }}">{{ $venue }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="create_agency">Agency</label>
-                            <select id="create_agency" class="form-control">
-                                <option>Agency</option>
+                            <select id="create_agency" name= "create_agency" class="form-control">
+                                <option value="0">No Agency</option>
+                                @foreach ($agencies as $id=>$agency)
+                                    <option value="{{ $id }}">{{ $agency }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">

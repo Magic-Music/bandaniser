@@ -18,7 +18,6 @@ class Gig extends Model
     protected $fillable = [
         'venue_id',
         'agency_id',
-        'member_id',
         'date',
         'price',
         'confirmed',
@@ -28,7 +27,6 @@ class Gig extends Model
 
     protected $casts = [
         'arrival' => 'datetime:H:i',
-        'soundcheck_finish' => 'datetime:H:i',
     ];
 
     public function venue() {

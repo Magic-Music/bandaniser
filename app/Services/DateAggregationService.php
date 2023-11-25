@@ -15,6 +15,18 @@ class DateAggregationService
     private ?array $rehearsals = null;
     private ?array $availability = null;
 
+    public function getAllAggregatedData(string $date): array
+    {
+        $dateParts = $this->getDateParts($date);
+        $calendarData = $this->getAggregatedEventData(...$dateParts);
+        $eventData = $this->getAggregatedDateData(...$dateParts);
+
+        return [
+            'calendar' => $calendarData,
+            'events' =>$eventData,
+        ];
+    }
+
     public function getAggregatedEventData(int $year, int $month): array
     {
         $this->year = $year;
