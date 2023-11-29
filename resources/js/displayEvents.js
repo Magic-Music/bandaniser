@@ -1,4 +1,4 @@
-export class Events {
+export class DisplayEvents {
     showEvents(date) {
         let events = calendar.getEvents(date)
         let html = this.getGigs(events.gigs)
@@ -64,8 +64,13 @@ export class Events {
                         <div class="card-body">`
 
             availability.forEach((person) => {
-                html += `${person.member.name}<br>
-                         ${person.note ? '<i>(' + person.note + ')</i><br><br>' : ''}`
+                html += `<div class="d-flex">
+                            <div class="flex-grow-1">${person.member.name}</div>
+                             <div onclick="manageEvents.deleteAvailability(${person.id}, '${person.date}')">
+                                 <img width=28px height=28px src="/images/bin.svg">
+                             </div>
+                        </div>
+                        ${person.note ? '<i>(' + person.note + ')</i><br><br>' : '<br>'}`
             })
             html += '</div></div>'
         }

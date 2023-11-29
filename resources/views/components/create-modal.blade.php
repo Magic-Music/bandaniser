@@ -11,13 +11,13 @@
             <div class="modal-body">
                 <h6>Select event type</h6>
                 <div class="btn-group d-flex" role="group" aria-label="Event type">
-                    <button type="button" class="w-100 btn btn-gig" onclick="create.showForm('gig')">Gig</button>
-                    <button type="button" class="w-100 btn btn-available" onclick="create.showForm('availability')">Availability</button>
-                    <button type="button" class="w-100 btn btn-rehearsal" onclick="create.showForm('rehearsal')">Rehearsal</button>
+                    <button type="button" class="w-100 btn btn-gig" onclick="manageEvents.showForm('gig')">Gig</button>
+                    <button type="button" class="w-100 btn btn-available" onclick="manageEvents.showForm('availability')">Availability</button>
+                    <button type="button" class="w-100 btn btn-rehearsal" onclick="manageEvents.showForm('rehearsal')">Rehearsal</button>
                 </div>
 
                 <div id="create_gig" class="d-none py-2 create-event-form">
-                    <form id="create_gig_form" onsubmit="event.preventDefault(); create.createGig(); return false;">
+                    <form id="create_gig_form" onsubmit="event.preventDefault(); manageEvents.createGig(); return false;">
                         <div class="form-group">
                             <label for="create_venue">Venue</label>
                             <select id="create_venue" name="create_venue" class="form-control">
@@ -56,7 +56,7 @@
                 </div>
 
                 <div id="create_availability" class="d-none py-2 create-event-form">
-                    <form id="create_availability_form" onsubmit="event.preventDefault(); create.createAvailability(); return false;">
+                    <form id="create_availability_form" onsubmit="event.preventDefault(); manageEvents.createAvailability(); return false;">
                         <div class="form-group">
                             <label for="create_length">Not available for how many days?</label>
                             <input type="number" id="create_length" name="create_length" class="form-control" value="1" required>
@@ -70,7 +70,7 @@
                 </div>
 
                 <div id="create_rehearsal" class="d-none py-2 create-event-form">
-                    <form id="create_rehearsal_form" onsubmit="event.preventDefault(); create.createRehearsal(); return false;">
+                    <form id="create_rehearsal_form" onsubmit="event.preventDefault(); manageEvents.createRehearsal(); return false;">
                         <div class="form-group">
                             <label for="create_start">Start Time</label>
                             <input type="time" id="create_start" name="create_start" placeholder="e.g. 19:00" class="form-control" required>

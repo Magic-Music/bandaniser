@@ -5,7 +5,7 @@
     style="flex: 1 1 0; "
     @if ((string)$dateNumber != "")
         id="date_{{ $dateNumber }}"
-        onClick="events.showEvents({{ $dateNumber }});"
+        onClick="displayEvents.showEvents({{ $dateNumber }});"
     @endif
 >
     <div class="px-1">
@@ -24,8 +24,8 @@
 
     @if ((string)$dateNumber != "")
         <div class="d-flex flex-row-reverse mt-auto">
-            <div class="border-top border-left border-dark bg-light" data-toggle="modal" data-target="#createModal" onclick="create.open('{{ $year }}-{{ $month }}-{{ $dateNumber }}');">
-                <img height=20px width=20px src="{{ Vite::asset('resources/images/plus.png') }}">
+            <div class="border-top border-left border-dark bg-light" data-toggle="modal" data-target="#createModal" onclick="manageEvents.open('{{ $year }}-{{ $month }}-{{ $dateNumber }}');">
+                <img height=20px width=20px src="/images/plus.svg">
             </div>
         </div>
     @endif

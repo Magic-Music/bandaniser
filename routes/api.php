@@ -22,5 +22,10 @@ Route::get('/calendar/{year}/{month}', [CalendarController::class, 'getCalendar'
 Route::get('/events/{year}/{month}', [CalendarController::class, 'getEvents']);
 
 Route::post('/availability/create', [AvailabilityController::class, 'create']);
+Route::delete('/availability/delete/{id}/{date}', [AvailabilityController::class, 'delete']);
+
 Route::post('/rehearsal/create', [RehearsalController::class, 'create']);
+Route::delete('/rehearsal/delete/{id}/{date}', [RehearsalController::class, 'delete']);
+
 Route::post('/gig/create', [GigController::class, 'create']);
+Route::delete('/gig/delete/{id}/{date}', [GigController::class, 'delete']);

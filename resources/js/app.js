@@ -6,11 +6,11 @@ import './generic'
 import {Calendar} from './calendar'
 window.calendar = new Calendar
 
-import {Events} from './events'
-window.events = new Events
+import {DisplayEvents} from './displayEvents.js'
+window.displayEvents = new DisplayEvents
 
-import {Create} from "./create";
-window.create = new Create
+import {ManageEvents} from "./manageEvents.js";
+window.manageEvents = new ManageEvents
 
 import {Member} from "./member";
 window.member = new Member

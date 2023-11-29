@@ -1,4 +1,4 @@
-export class Create {
+export class ManageEvents {
     constructor() {
         this.date = ''
         this.displayDate = ''
@@ -42,6 +42,15 @@ export class Create {
             })
     }
 
+    deleteAvailability(id, date) {
+        this.date = date
+
+        axios.delete(`/api/availability/delete/${id}/${date}`)
+            .then((response) => {
+                this.updateCalendar(response.data)
+            })
+    }
+
     createRehearsal() {
         $('#createModal').modal('hide')
 
@@ -62,7 +71,7 @@ export class Create {
     updateCalendar(data) {
         elUpdate('calendar', data.html)
         calendar.storeEventData(data.events)
-        events.showEvents(this.getDayFromDate(this.date))
+        displayEvents.showEvents(this.getDayFromDate(this.date))
     }
 
     formatDate(date) {
