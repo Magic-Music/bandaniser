@@ -2,24 +2,25 @@
 
 namespace App\Services;
 
+use App\Entities\AvailabilityEntity;
 use App\Models\Availability;
 
 class AvailabilityService
 {
     public function __construct(private ResponseDataService $responseDataService) {}
 
-    public function createAvailability(string $date, int $memberId,  int $numberOfDays, ?string $note)
+    public function createAvailability(AvailabilityEntity $availability)
     {
-        for ($i = 0; $i < $numberOfDays; $i++) {
-            $dateToAdd = date('Y-m-d', strtotime($date . " + $i days"));
+        for ($i = 0; $i < $availability->length; $i++) {
+            $dateToAdd = date('Y-m-d', strtotime($availability->date . " + $i days"));
             Availability::create([
-                'member_id' => $memberId,
+                'member_id' => $availability->memberId,
                 'date' => $dateToAdd,
-                'note' => $note,
+                'note' => $availability->note,
             ]);
         }
 
-        return $this->responseDataService->getResponseData($date);
+        return $this->responseDataService->getResponseData($availability->date);
     }
 
     public function deleteAvailability(int $id, string $date)

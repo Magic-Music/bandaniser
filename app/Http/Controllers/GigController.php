@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 class GigController extends Controller
 {
     public function __construct(
-        private GigService $gigService,
         private GigEntity $gig,
+        private GigService $gigService,
     ) {}
 
     public function create(Request $request)

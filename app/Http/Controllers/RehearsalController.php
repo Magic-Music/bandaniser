@@ -2,23 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Entities\RehearsalEntity;
 use App\Services\RehearsalService;
 use Illuminate\Http\Request;
 
 class RehearsalController extends Controller
 {
-    public function __construct(private RehearsalService $rehearsalService)
-    {}
+    public function __construct(
+        private RehearsalEntity $rehearsal,
+        private RehearsalService $rehearsalService
+    ) {}
 
     public function create(Request $request)
     {
-        return $this->rehearsalService
-            ->createRehearsal(
-                $request->input('date'),
-                $request->input('create_start'),
-                $request->input('create_location'),
-                $request->input('create_rehearsal_note'),
-            );
+        $this->rehearsal->set([
+            'date' => $request->input('date'),
+            'time' => $request->input('create_start'),
+            'location' => $request->input('create_location'),
+            'note' => $request->input('create_rehearsal_note'),
+        ]);
+
+        return $this->rehearsalService->createRehearsal($this->rehearsal);
     }
 
     public function delete($id, $date)

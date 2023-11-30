@@ -2,8 +2,6 @@
 
 namespace App\Entities;
 
-use App\Entities\Entity;
-
 class GigEntity extends Entity
 {
     public int $venue_id;

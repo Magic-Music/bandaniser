@@ -2,22 +2,23 @@
 
 namespace App\Services;
 
+use App\Entities\RehearsalEntity;
 use App\Models\Rehearsal;
 
 class RehearsalService
 {
     public function __construct(private ResponseDataService $responseDataService) {}
 
-    public function createRehearsal(string $date, ?string $time, ?string $location, ?string $note)
+    public function createRehearsal(RehearsalEntity $rehearsal)
     {
         Rehearsal::create([
-            'date' => $date,
-            'time' => $time,
-            'location' => $location,
-            'note' => $note,
+            'date' => $rehearsal->date,
+            'time' => $rehearsal->time,
+            'location' => $rehearsal->location,
+            'note' => $rehearsal->note,
         ]);
 
-        return $this->responseDataService->getResponseData($date);
+        return $this->responseDataService->getResponseData($rehearsal->date);
     }
 
     public function deleteRehearsal(int $id, string $date)
