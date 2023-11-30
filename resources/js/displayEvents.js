@@ -21,6 +21,9 @@ export class DisplayEvents {
             html += `<div class="card">
                         <div class="card-header d-flex ${gig.confirmed ? 'bg-gig' : 'bg-enquiry'}">
                             <div class="flex-grow-1">${gig.confirmed ? 'Gig' : 'Enquiry'} - ${gig.venue.name}</div>
+                             <div onclick="updateEvents.showUpdateGigModal(${gig}')">
+                                 <img width=22px height=22px src="/images/pencil.svg">
+                             </div>
                              <div onclick="manageEvents.deleteGig(${gig.id}, '${gig.date}')">
                                  <img width=28px height=28px src="/images/bin.svg">
                              </div>
@@ -45,6 +48,9 @@ export class DisplayEvents {
             html += `<div class="card">
                         <div class="card-header bg-rehearsal d-flex align-items-start">
                              <div class="flex-grow-1">Rehearsal - ${rehearsal.time}</div>
+                             <div onclick="updateEvents.showUpdateRehearsalModal(${rehearsal})">
+                                 <img width=22px height=22px src="/images/pencil.svg">
+                             </div>
                              <div onclick="manageEvents.deleteRehearsal(${rehearsal.id}, '${rehearsal.date}')">
                                  <img width=28px height=28px src="/images/bin.svg">
                              </div>
@@ -72,6 +78,9 @@ export class DisplayEvents {
             availability.forEach((person) => {
                 html += `<div class="d-flex">
                             <div class="flex-grow-1">${person.member.name}</div>
+                             <div onclick="updateEvents.showUpdateAvailabilityModal(${person})">
+                                 <img width=22px height=22px src="/images/pencil.svg">
+                             </div>
                              <div onclick="manageEvents.deleteAvailability(${person.id}, '${person.date}')">
                                  <img width=28px height=28px src="/images/bin.svg">
                              </div>

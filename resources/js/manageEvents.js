@@ -43,9 +43,7 @@ export class ManageEvents {
     createAvailability() {
         $('#createModal').modal('hide')
 
-        let formData = this.getFormValues('availability')
-        formData['member_id'] = member.memberId
-        axios.post(`/api/availability/create`, formData)
+        axios.post(`/api/availability/create`, this.getFormValues('availability'))
             .then((response) => {
                 this.updateCalendar(response.data)
             })

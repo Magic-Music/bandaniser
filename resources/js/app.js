@@ -12,9 +12,6 @@ window.displayEvents = new DisplayEvents
 import {ManageEvents} from "./manageEvents.js";
 window.manageEvents = new ManageEvents
 
-import {Member} from "./member";
-window.member = new Member
-
 import.meta.glob([
     '../images/**',
 ]);

@@ -58,6 +58,14 @@
                 <div id="create_availability" class="d-none py-2 create-event-form">
                     <form id="create_availability_form" onsubmit="event.preventDefault(); manageEvents.createAvailability(); return false;">
                         <div class="form-group">
+                            <label for="member_id">Select Member</label>
+                            <select class="form-control" id="member_id" name="member_id" required>
+                                @foreach($members as $id=>$name)
+                                    <option value="{{ $id }}" id="member_{{ $id }}">{{ $name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="create_length">Not available for how many days?</label>
                             <input type="number" id="create_length" name="create_length" class="form-control" value="1" required>
                         </div>

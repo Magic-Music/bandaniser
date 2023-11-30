@@ -21,14 +21,6 @@
             <x-nav-item slug="gigs">Gigs</x-nav-item>
             <x-nav-item slug="venues">Venues</x-nav-item>
             <x-nav-item slug="agencies">Agencies</x-nav-item>
-            <div class="border border-1 border-light">
-            <x-nav-dropdown
-                id="member_dropdown"
-                title="Select Member"
-                action="member.selectMember"
-                :items="\App\Services\MemberService::getMembers()"
-            />
-            </div>
         </x-navbar>
 
         <div class="flex-grow-1 h-100">
