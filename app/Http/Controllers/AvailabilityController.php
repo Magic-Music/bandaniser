@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Availability;
 use App\Services\AvailabilityService;
-use App\Services\DateAggregationService;
 use Illuminate\Http\Request;
 
 class AvailabilityController extends Controller

@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Rehearsal;
-use App\Services\DateAggregationService;
 use App\Services\RehearsalService;
 use Illuminate\Http\Request;
 

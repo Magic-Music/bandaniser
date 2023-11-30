@@ -31,6 +31,15 @@ export class ManageEvents {
             })
     }
 
+    deleteGig(id, date) {
+        this.date = date
+
+        axios.delete(`/api/gig/delete/${id}/${date}`)
+            .then((response) => {
+                this.updateCalendar(response.data)
+            })
+    }
+
     createAvailability() {
         $('#createModal').modal('hide')
 

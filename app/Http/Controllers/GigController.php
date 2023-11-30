@@ -2,34 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Gig;
-use App\Services\DateAggregationService;
+use App\Entities\GigEntity;
+use App\Services\GigService;
 use Illuminate\Http\Request;
 
 class GigController extends Controller
 {
-    public function __construct(private DateAggregationService $dateAggregationService)
-    {}
+    public function __construct(
+        private GigService $gigService,
+        private GigEntity $gig,
+    ) {}
 
     public function create(Request $request)
     {
-        $date = $request->input('date');
-
-        Gig::create([
+        $this->gig->set([
             'venue_id' => $request->input('create_venue'),
             'agency_id' => $request->input('create_agency') ?: null,
-            'date' => $date,
+            'date' => $request->input('date'),
             'price' => $request->input('create_price'),
             'confirmed' => $request->boolean('create_confirmed'),
             'arrival' => $request->input('create_arrival'),
             'note' => $request->input('create_gig_note'),
         ]);
 
-        $responseData = $this->dateAggregationService->getAllAggregatedData($date);
+        return $this->gigService->createGig($this->gig);
+    }
 
-        return [
-            'html' => view('layouts.calendar', $responseData['calendar'])->render(),
-            'events' => $responseData['events']
-        ];
+    public function delete($id, $date)
+    {
+        return $this->gigService->deleteGig($id, $date);
     }
 }
