@@ -7,9 +7,18 @@ use App\Models\Availability;
 
 class AvailabilityService
 {
-    public function __construct(private ResponseDataService $responseDataService) {}
+    public function __construct() {}
 
-    public function createAvailability(AvailabilityEntity $availability)
+    public function getAvailabilityForMonth(int $year, int $month): array
+    {
+        return Availability::whereYear('date', '=', $year)
+            ->whereMonth('date', '=', $month)
+            ->with('member')
+            ->get()
+            ->toArray();
+    }
+
+    public function createAvailability(AvailabilityEntity $availability): void
     {
         for ($i = 0; $i < $availability->length; $i++) {
             $dateToAdd = date('Y-m-d', strtotime($availability->date . " + $i days"));
@@ -19,14 +28,10 @@ class AvailabilityService
                 'note' => $availability->note,
             ]);
         }
-
-        return $this->responseDataService->getResponseData($availability->date);
     }
 
-    public function deleteAvailability(int $id, string $date)
+    public function deleteAvailability(int $id): void
     {
         Availability::destroy($id);
-
-        return $this->responseDataService->getResponseData($date);
     }
 }

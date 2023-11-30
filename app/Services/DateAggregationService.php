@@ -15,6 +15,12 @@ class DateAggregationService
     private ?array $rehearsals = null;
     private ?array $availability = null;
 
+    public function __construct(
+        private GigService $gigService,
+        private RehearsalService $rehearsalService,
+        private AvailabilityService $availabilityService,
+    ) {}
+
     public function getAllAggregatedData(string $date): array
     {
         $dateParts = $this->getDateParts($date);
@@ -81,11 +87,7 @@ class DateAggregationService
     private function getGigs(): array
     {
         if (!$this->gigs) {
-            $this->gigs = Gig::whereYear('date', '=', $this->year)
-                ->whereMonth('date', '=', $this->month)
-                ->with('venue')
-                ->get()
-                ->toArray();
+            $this->gigs = $this->gigService->getGigsForMonth($this->year, $this->month);
         }
 
         return $this->gigs;
@@ -94,11 +96,7 @@ class DateAggregationService
     private function getAvailability(): array
     {
         if (!$this->availability) {
-            $this->availability = Availability::whereYear('date', '=', $this->year)
-                ->whereMonth('date', '=', $this->month)
-                ->with('member')
-                ->get()
-                ->toArray();
+            $this->availability = $this->availabilityService->getAvailabilityForMonth($this->year, $this->month);
         }
 
         return $this->availability;
@@ -107,10 +105,7 @@ class DateAggregationService
     private function getRehearsals(): array
     {
         if (!$this->rehearsals) {
-            $this->rehearsals = Rehearsal::whereYear('date', '=', $this->year)
-                ->whereMonth('date', '=', $this->month)
-                ->get()
-                ->toArray();
+            $this->rehearsals = $this->rehearsalService->getRehearsalsForMonth($this->year, $this->month);
         }
 
         return $this->rehearsals;

@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Entities\RehearsalEntity;
 use App\Services\RehearsalService;
+use App\Services\ResponseDataService;
 use Illuminate\Http\Request;
 
 class RehearsalController extends Controller
 {
     public function __construct(
         private RehearsalEntity $rehearsal,
-        private RehearsalService $rehearsalService
+        private RehearsalService $rehearsalService,
+        private ResponseDataService $responseDataService,
     ) {}
 
     public function create(Request $request)
@@ -22,11 +24,15 @@ class RehearsalController extends Controller
             'note' => $request->input('create_rehearsal_note'),
         ]);
 
-        return $this->rehearsalService->createRehearsal($this->rehearsal);
+        $this->rehearsalService->createRehearsal($this->rehearsal);
+
+        return $this->responseDataService->getResponseData($this->rehearsal->date);
     }
 
     public function delete($id, $date)
     {
-        return $this->rehearsalService->deleteRehearsal($id, $date);
+        $this->rehearsalService->deleteRehearsal($id);
+
+        return $this->responseDataService->getResponseData($date);
     }
 }

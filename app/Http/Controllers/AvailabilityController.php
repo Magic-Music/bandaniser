@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Entities\AvailabilityEntity;
 use App\Services\AvailabilityService;
+use App\Services\ResponseDataService;
 use Illuminate\Http\Request;
 
 class AvailabilityController extends Controller
 {
     public function __construct(
         private AvailabilityEntity $availability,
-        private AvailabilityService $availabilityService
+        private AvailabilityService $availabilityService,
+        private ResponseDataService $responseDataService,
     ) {}
 
     public function create(Request $request)
@@ -22,11 +24,15 @@ class AvailabilityController extends Controller
             'note' => $request->input('create_availability_note'),
         ]);
 
-        return $this->availabilityService->createAvailability($this->availability);
+        $this->availabilityService->createAvailability($this->availability);
+
+        return $this->responseDataService->getResponseData($this->availability->date);
     }
 
     public function delete($id, $date)
     {
-        return $this->availabilityService->deleteAvailability($id, $date);
+        $this->availabilityService->deleteAvailability($id);
+
+        return $this->responseDataService->getResponseData($date);
     }
 }

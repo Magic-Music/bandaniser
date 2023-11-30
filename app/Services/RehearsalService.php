@@ -7,9 +7,17 @@ use App\Models\Rehearsal;
 
 class RehearsalService
 {
-    public function __construct(private ResponseDataService $responseDataService) {}
+    public function __construct() {}
 
-    public function createRehearsal(RehearsalEntity $rehearsal)
+    public function getRehearsalsForMonth(int $year, int $month): array
+    {
+        return Rehearsal::whereYear('date', '=', $year)
+            ->whereMonth('date', '=', $month)
+            ->get()
+            ->toArray();
+    }
+
+    public function createRehearsal(RehearsalEntity $rehearsal): void
     {
         Rehearsal::create([
             'date' => $rehearsal->date,
@@ -17,14 +25,10 @@ class RehearsalService
             'location' => $rehearsal->location,
             'note' => $rehearsal->note,
         ]);
-
-        return $this->responseDataService->getResponseData($rehearsal->date);
     }
 
-    public function deleteRehearsal(int $id, string $date)
+    public function deleteRehearsal(int $id): void
     {
         Rehearsal::destroy($id);
-
-        return $this->responseDataService->getResponseData($date);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Entities\GigEntity;
 use App\Services\GigService;
+use App\Services\ResponseDataService;
 use Illuminate\Http\Request;
 
 class GigController extends Controller
@@ -11,6 +12,7 @@ class GigController extends Controller
     public function __construct(
         private GigEntity $gig,
         private GigService $gigService,
+        private ResponseDataService $responseDataService,
     ) {}
 
     public function create(Request $request)
@@ -25,11 +27,15 @@ class GigController extends Controller
             'note' => $request->input('create_gig_note'),
         ]);
 
-        return $this->gigService->createGig($this->gig);
+        $this->gigService->createGig($this->gig);
+
+        return $this->responseDataService->getResponseData($this->gig->date);
     }
 
     public function delete($id, $date)
     {
-        return $this->gigService->deleteGig($id, $date);
+        $this->gigService->deleteGig($id);
+
+        return $this->responseDataService->getResponseData($date);
     }
 }
