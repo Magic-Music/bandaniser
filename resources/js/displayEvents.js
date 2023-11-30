@@ -40,8 +40,11 @@ export class DisplayEvents {
 
         rehearsals.forEach((rehearsal) => {
             html += `<div class="card">
-                        <div class="card-header bg-rehearsal">
-                             Rehearsal - ${rehearsal.time}
+                        <div class="card-header bg-rehearsal d-flex align-items-start">
+                             <div class="flex-grow-1">Rehearsal - ${rehearsal.time}</div>
+                             <div onclick="manageEvents.deleteRehearsal(${rehearsal.id}, '${rehearsal.date}')">
+                                 <img width=28px height=28px src="/images/bin.svg">
+                             </div>
                         </div>
                         <div class="card-body">
                             Location: ${rehearsal.location}<br><br>

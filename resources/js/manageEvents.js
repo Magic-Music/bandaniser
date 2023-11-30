@@ -60,6 +60,15 @@ export class ManageEvents {
             })
     }
 
+    deleteRehearsal(id, date) {
+        this.date = date
+
+        axios.delete(`/api/rehearsal/delete/${id}/${date}`)
+            .then((response) => {
+                this.updateCalendar(response.data)
+            })
+    }
+
     getFormValues(formId) {
         let formData = new FormData(el('create_' + formId + '_form'))
         let formObject = Object.fromEntries(formData.entries());

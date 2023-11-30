@@ -4,29 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\Rehearsal;
 use App\Services\DateAggregationService;
+use App\Services\RehearsalService;
 use Illuminate\Http\Request;
 
 class RehearsalController extends Controller
 {
-    public function __construct(private DateAggregationService $dateAggregationService)
+    public function __construct(private RehearsalService $rehearsalService)
     {}
 
     public function create(Request $request)
     {
-        $date = $request->input('date');
+        return $this->rehearsalService
+            ->createRehearsal(
+                $request->input('date'),
+                $request->input('create_start'),
+                $request->input('create_location'),
+                $request->input('create_rehearsal_note'),
+            );
+    }
 
-        Rehearsal::create([
-            'date' => $date,
-            'time' => $request->input('create_start'),
-            'location' => $request->input('create_location'),
-            'note' => $request->input('create_rehearsal_note'),
-        ]);
-
-        $responseData = $this->dateAggregationService->getAllAggregatedData($date);
-
-        return [
-            'html' => view('layouts.calendar', $responseData['calendar'])->render(),
-            'events' => $responseData['events']
-        ];
+    public function delete($id, $date)
+    {
+        return $this->rehearsalService->deleteRehearsal($id, $date);
     }
 }
