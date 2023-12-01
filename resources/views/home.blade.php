@@ -33,7 +33,8 @@
     </div>
     <x-create-modal />
     <x-update-availability-modal />
-    
+    <x-update-rehearsal-modal />
+
 @endsection
 
 @section('script')

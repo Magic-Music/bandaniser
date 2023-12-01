@@ -5,7 +5,13 @@
 
 
 ### Install Bandaniser on your local machine
-- Get the code
+
+#### Prerequisites
+- PHP 8.1 or above
+- Composer
+- Node
+
+#### Get the code
 - Clone the repository
 - Checkout git develop branch if required 
 

@@ -38,6 +38,10 @@ export class Calendar {
         return this.getEventById(this.calendarEvents.availability ?? [], id)
     }
 
+    getRehearsalById(id) {
+        return this.getEventById(this.calendarEvents.rehearsals ?? [], id)
+    }
+
     getEventById(events, id) {
         let result = {}
 

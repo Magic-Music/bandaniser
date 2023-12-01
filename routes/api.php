@@ -25,8 +25,8 @@ Route::post('/availability/create', [AvailabilityController::class, 'create']);
 Route::patch('/availability/update', [AvailabilityController::class, 'update']);
 Route::delete('/availability/delete/{id}/{date}', [AvailabilityController::class, 'delete']);
 
-
 Route::post('/rehearsal/create', [RehearsalController::class, 'create']);
+Route::patch('/rehearsal/update', [RehearsalController::class, 'update']);
 Route::delete('/rehearsal/delete/{id}/{date}', [RehearsalController::class, 'delete']);
 
 Route::post('/gig/create', [GigController::class, 'create']);

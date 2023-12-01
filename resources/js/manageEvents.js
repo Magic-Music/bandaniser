@@ -6,6 +6,7 @@ export class ManageEvents {
 
     setDate(date) {
         this.date = date
+        this.displayDate = this.formatDate(date)
     }
 
     open(date) {
@@ -75,6 +76,15 @@ export class ManageEvents {
         $('#createModal').modal('hide')
 
         axios.post(`/api/rehearsal/create`, this.getFormValues('create_rehearsal_form'))
+            .then((response) => {
+                this.updateCalendar(response.data)
+            })
+    }
+
+    updateRehearsal() {
+        $('#rehearsalModal').modal('hide')
+
+        axios.patch(`/api/rehearsal/update`, this.getFormValues('update_rehearsal_form'))
             .then((response) => {
                 this.updateCalendar(response.data)
             })

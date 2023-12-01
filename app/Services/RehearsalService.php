@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Entities\RehearsalEntity;
+use App\Models\Availability;
 use App\Models\Rehearsal;
 
 class RehearsalService
@@ -25,6 +26,16 @@ class RehearsalService
             'location' => $rehearsal->location,
             'note' => $rehearsal->note,
         ]);
+    }
+
+    public function updateRehearsal(RehearsalEntity $rehearsal): void
+    {
+        Rehearsal::where('id', $rehearsal->id)
+            ->update([
+                'time' => $rehearsal->time,
+                'location' => $rehearsal->location,
+                'note' => $rehearsal->note,
+            ]);
     }
 
     public function deleteRehearsal(int $id): void
