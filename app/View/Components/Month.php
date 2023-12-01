@@ -67,10 +67,11 @@ class Month extends Component
         $dayNumber = 1;
         for($cell = 1; $cell < 43; $cell++)
         {
+            $firstInRow = ($cell % 7) == 1 ? ['firstInRow' => true] : [];
             $lastInRow = ($cell % 7) == 0 ? ['lastInRow' => true] : [];
 
             if ($cell < $startCell) {
-                $days[] = [...$lastInRow];
+                $days[] = [...$firstInRow, ...$lastInRow];
                 continue;
             }
 
@@ -84,7 +85,8 @@ class Month extends Component
                     'gigs' => $this->gigDates[$dateToSearch] ?? [],
                     'availability' => $this->availabilityDates[$dateToSearch] ?? [],
                     'rehearsals' => $this->rehearsalDates[$dateToSearch] ?? [],
-                    ...$lastInRow
+                    ...$firstInRow,
+                    ...$lastInRow,
                 ];
 
                 $dayNumber++;
@@ -93,10 +95,11 @@ class Month extends Component
             }
 
             if ($dayNumber > $daysInMonth && ($cell % 7) == 0) {
-                $this->calendarRowHeight = round(90/($cell / 7), 2);
+                $this->calendarRowHeight = round(100/($cell / 7), 2);
                 break;
             }
         }
+
         $this->calendar = $days;
     }
 

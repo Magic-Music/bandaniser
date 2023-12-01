@@ -9,12 +9,13 @@
                 </div>
             @endfor
         </div>
-        <div class="d-flex flex-grow-1 bg-calendar" style="height: {{ $calendarRowHeight }}% !important; ">
             @foreach($calendar as $day)
+                @if($day['firstInRow'] ?? null)
+                    <div class="d-flex flex-grow-1 bg-calendar" style="height: {{ $calendarRowHeight }}% !important; ">
+                @endif
                 <x-day :$day/>
-                @if(($day['day'] ?? null) == 'Sunday')
+                @if($day['lastInRow'] ?? null)
                     </div>
-                    <div class="d-flex flex-grow-1 bg-calendar"  style="height: {{ $calendarRowHeight }}% !important;  ">
                 @endif
             @endforeach
         </div>
