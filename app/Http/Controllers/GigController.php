@@ -32,6 +32,21 @@ class GigController extends Controller
         return $this->responseDataService->getRenderedCalendarAndEventData($this->gig->date);
     }
 
+    public function update(Request $request)
+    {
+        $this->gig->set([
+            'id' => $request->input('update_gig_id'),
+            'price' => $request->input('update_gig_price'),
+            'confirmed' => $request->boolean('update_gig_confirmed'),
+            'arrival' => $request->input('update_gig_arrival'),
+            'note' => $request->input('update_gig_note'),
+        ]);
+
+        $this->gigService->updateGig($this->gig);
+
+        return $this->responseDataService->getRenderedCalendarAndEventData($request->input('date'));
+    }
+
     public function delete($id, $date)
     {
         $this->gigService->deleteGig($id);

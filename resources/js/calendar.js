@@ -42,6 +42,10 @@ export class Calendar {
         return this.getEventById(this.calendarEvents.rehearsals ?? [], id)
     }
 
+    getGigById(id) {
+        return this.getEventById(this.calendarEvents.gigs ?? [], id)
+    }
+
     getEventById(events, id) {
         let result = {}
 

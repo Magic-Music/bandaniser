@@ -20,8 +20,8 @@ export class DisplayEvents {
         gigs.forEach((gig) => {
             html += `<div class="card">
                         <div class="card-header d-flex ${gig.confirmed ? 'bg-gig' : 'bg-enquiry'}">
-                            <div class="flex-grow-1">${gig.confirmed ? 'Gig' : 'Enquiry'} - ${gig.venue.name}</div>
-                             <div class="btn-icon" data-toggle="modal" data-target="#gigModal" onclick="updateEvents.showUpdateGigModal(${gig.id}')">
+                            <div class="flex-grow-1">${gig.confirmed ? 'Gig' : 'Provisional Booking'} - ${gig.venue.name}</div>
+                             <div class="btn-icon" data-toggle="modal" data-target="#gigModal" onclick="updateEvents.showUpdateGigModal(${gig.id})">
                                  <img width=22px height=22px src="/images/pencil.svg">
                              </div>
                              <div class="btn-icon" onclick="manageEvents.deleteGig(${gig.id}, '${gig.date}')">

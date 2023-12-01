@@ -36,8 +36,8 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="create_price">Price</label>
-                            <input type="text" id="create_price" name="create_price" placeholder="e.g. 1000" class="form-control">
+                            <label for="create_price">Fee</label>
+                            <input type="number" id="create_price" name="create_price" placeholder="e.g. 1000" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="create_arrival">Arrival Time</label>

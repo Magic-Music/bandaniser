@@ -30,4 +30,5 @@ Route::patch('/rehearsal/update', [RehearsalController::class, 'update']);
 Route::delete('/rehearsal/delete/{id}/{date}', [RehearsalController::class, 'delete']);
 
 Route::post('/gig/create', [GigController::class, 'create']);
+Route::patch('/gig/update', [GigController::class, 'update']);
 Route::delete('/gig/delete/{id}/{date}', [GigController::class, 'delete']);

@@ -33,3 +33,11 @@ window.show = (element) => {
 window.hide = (element) => {
     addClass(element, "d-none")
 }
+
+window.check = (element) => {
+    el(element).checked = true
+}
+
+window.uncheck = (element) => {
+    el(element).checked = false
+}

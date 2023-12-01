@@ -36,6 +36,15 @@ export class ManageEvents {
             })
     }
 
+    updateGig() {
+        $('#gigModal').modal('hide')
+
+        axios.patch(`/api/gig/update`, this.getFormValues('update_gig_form'))
+            .then((response) => {
+                this.updateCalendar(response.data)
+            })
+    }
+
     deleteGig(id, date) {
         this.date = date
 

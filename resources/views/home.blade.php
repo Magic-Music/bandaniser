@@ -34,6 +34,7 @@
     <x-create-modal />
     <x-update-availability-modal />
     <x-update-rehearsal-modal />
+    <x-update-gig-modal />
 
 @endsection
 
