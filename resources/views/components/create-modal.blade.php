@@ -17,18 +17,18 @@
                 </div>
 
                 <div id="create_gig" class="d-none py-2 create-event-form">
-                    <form id="create_gig_form" onsubmit="event.preventDefault(); manageEvents.createGig(); return false;">
+                    <form id="create-gig-form" onsubmit="event.preventDefault(); manageEvents.createGig(); return false;">
                         <div class="form-group">
-                            <label for="create_venue">Venue</label>
-                            <select id="create_venue" name="create_venue" class="form-control">
+                            <label for="create-venue">Venue</label>
+                            <select id="create-venue" name="create-venue" class="form-control">
                                 @foreach ($venues as $id=>$venue)
                                     <option value="{{ $id }}">{{ $venue }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="create_agency">Agency</label>
-                            <select id="create_agency" name= "create_agency" class="form-control">
+                            <label for="create-agency">Agency</label>
+                            <select id="create-agency" name= "create-agency" class="form-control">
                                 <option value="0">No Agency</option>
                                 @foreach ($agencies as $id=>$agency)
                                     <option value="{{ $id }}">{{ $agency }}</option>
@@ -36,60 +36,60 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="create_price">Fee</label>
-                            <input type="number" id="create_price" name="create_price" placeholder="e.g. 1000" class="form-control">
+                            <label for="create-price">Fee</label>
+                            <input type="number" id="create-price" name="create-price" placeholder="e.g. 1000" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="create_arrival">Arrival Time</label>
-                            <input type="time" id="create_arrival" name="create_arrival" placeholder="e.g. 19:00" class="form-control">
+                            <label for="create-arrival">Arrival Time</label>
+                            <input type="time" id="create-arrival" name="create-arrival" placeholder="e.g. 19:00" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="create_gig_note">Note</label>
-                            <input type="text" id="create_gig_note" name="create_gig_note" placeholder="[optional details]" class="form-control">
+                            <label for="create-gig-note">Note</label>
+                            <input type="text" id="create-gig-note" name="create-gig-note" placeholder="[optional details]" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="create_confirmed">Confirmed?</label>
-                            <input type="checkbox" id="create_confirmed" name="create_confirmed" class="form-control">
+                            <label for="create-confirmed">Confirmed?</label>
+                            <input type="checkbox" id="create-confirmed" name="create-confirmed" class="form-control">
                         </div>
                         <button type="submit" class="btn btn-sm btn-primary">Add Gig</button>
                     </form>
                 </div>
 
                 <div id="create_availability" class="d-none py-2 create-event-form">
-                    <form id="create_availability_form" onsubmit="event.preventDefault(); manageEvents.createAvailability(); return false;">
+                    <form id="create-availability-form" onsubmit="event.preventDefault(); manageEvents.createAvailability(); return false;">
                         <div class="form-group">
-                            <label for="member_id">Select Member</label>
-                            <select class="form-control" id="member_id" name="member_id" required>
+                            <label for="member-id">Select Member</label>
+                            <select class="form-control" id="member-id" name="member-id" required>
                                 @foreach($members as $id=>$name)
-                                    <option value="{{ $id }}" id="member_{{ $id }}">{{ $name }}</option>
+                                    <option value="{{ $id }}" id="member-{{ $id }}">{{ $name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="create_length">Not available for how many days?</label>
-                            <input type="number" id="create_length" name="create_length" class="form-control" value="1" required>
+                            <label for="create-length">Not available for how many days?</label>
+                            <input type="number" id="create-length" name="create-length" class="form-control" value="1" required>
                         </div>
                         <div class="form-group">
-                            <label for="create_availability_note">Note</label>
-                            <input type="text" id="create_availability_note" name="create_availability_note" placeholder="[optional details]" class="form-control">
+                            <label for="create-availability-note">Note</label>
+                            <input type="text" id="create-availability-note" name="create-availability-note" placeholder="[optional details]" class="form-control">
                         </div>
                         <button type="submit" class="btn btn-sm btn-primary">Add Availability</button>
                     </form>
                 </div>
 
                 <div id="create_rehearsal" class="d-none py-2 create-event-form">
-                    <form id="create_rehearsal_form" onsubmit="event.preventDefault(); manageEvents.createRehearsal(); return false;">
+                    <form id="create-rehearsal-form" onsubmit="event.preventDefault(); manageEvents.createRehearsal(); return false;">
                         <div class="form-group">
-                            <label for="create_start">Start Time</label>
-                            <input type="time" id="create_start" name="create_start" placeholder="e.g. 19:00" class="form-control" required>
+                            <label for="create-start">Start Time</label>
+                            <input type="time" id="create-start" name="create-start" placeholder="e.g. 19:00" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="create_location">Location</label>
-                            <input type="text" id="create_location" name="create_location" placeholder="e.g. Adam's House" class="form-control" required>
+                            <label for="create-location">Location</label>
+                            <input type="text" id="create-location" name="create-location" placeholder="e.g. Adam's House" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="create_rehearsal_note">Note</label>
-                            <input type="text" id="create_rehearsal_note" name="create_rehearsal_note" placeholder="[optional details]" class="form-control">
+                            <label for="create-rehearsal-note">Note</label>
+                            <input type="text" id="create-rehearsal-note" name="create-rehearsal-note" placeholder="[optional details]" class="form-control">
                         </div>
                         <button type="submit" class="btn btn-sm btn-primary">Create Rehearsal</button>
                     </form>

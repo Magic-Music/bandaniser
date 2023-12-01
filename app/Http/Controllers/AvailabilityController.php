@@ -19,9 +19,9 @@ class AvailabilityController extends Controller
     {
         $this->availability->set([
             'date' => $request->input('date'),
-            'memberId' => $request->input('member_id'),
-            'length' => $request->input('create_length'),
-            'note' => $request->input('create_availability_note'),
+            'memberId' => $request->input('member-id'),
+            'length' => $request->input('create-length'),
+            'note' => $request->input('create-availability-note'),
         ]);
 
         $this->availabilityService->createAvailability($this->availability);
@@ -32,8 +32,8 @@ class AvailabilityController extends Controller
     public function update(Request $request)
     {
         $this->availabilityService->updateAvailability(
-            $request->update_availability_id,
-            $request->update_availability_note
+            $request->input('update-availability-id'),
+            $request->input('update-availability-note')
         );
 
         return $this->responseDataService->getRenderedCalendarAndEventData($request->input('date'));

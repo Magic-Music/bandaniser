@@ -8,20 +8,20 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="update_rehearsal_form" onsubmit="event.preventDefault(); manageEvents.updateRehearsal(); return false;">
+                <form id="update-rehearsal-form" onsubmit="event.preventDefault(); manageEvents.updateRehearsal(); return false;">
                     <div class="form-group">
-                        <label for="update_rehearsal_time">Time</label>
-                        <input type="time" id="update_rehearsal_time" name="update_rehearsal_time" placeholder="[optional details]" class="form-control">
+                        <label for="update-rehearsal-time">Time</label>
+                        <input type="time" id="update-rehearsal-time" name="update-rehearsal-time" placeholder="[optional details]" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="update_rehearsal_location">Location</label>
-                        <input type="text" id="update_rehearsal_location" name="update_rehearsal_location" placeholder="[optional details]" class="form-control">
+                        <label for="update-rehearsal-location">Location</label>
+                        <input type="text" id="update-rehearsal-location" name="update-rehearsal-location" placeholder="[optional details]" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="update_rehearsal_note">Note</label>
-                        <input type="text" id="update_rehearsal_note" name="update_rehearsal_note" placeholder="[optional details]" class="form-control">
+                        <label for="update-rehearsal-note">Note</label>
+                        <input type="text" id="update-rehearsal-note" name="update-rehearsal-note" placeholder="[optional details]" class="form-control">
                     </div>
-                    <input type="hidden" id="update_rehearsal_id" name="update_rehearsal_id" value="">
+                    <input type="hidden" id="update-rehearsal-id" name="update-rehearsal-id" value="">
                     <button type="submit" class="btn btn-sm btn-primary">Update Rehearsal</button>
                 </form>
             </div>

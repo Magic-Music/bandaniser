@@ -19,9 +19,9 @@ class RehearsalController extends Controller
     {
         $this->rehearsal->set([
             'date' => $request->input('date'),
-            'time' => $request->input('create_start'),
-            'location' => $request->input('create_location'),
-            'note' => $request->input('create_rehearsal_note'),
+            'time' => $request->input('create-start'),
+            'location' => $request->input('create-location'),
+            'note' => $request->input('create-rehearsal-note'),
         ]);
 
         $this->rehearsalService->createRehearsal($this->rehearsal);
@@ -32,10 +32,10 @@ class RehearsalController extends Controller
     public function update(Request $request)
     {
         $this->rehearsal->set([
-            'id' => $request->input('update_rehearsal_id'),
-            'time' => $request->input('update_rehearsal_time'),
-            'location' => $request->input('update_rehearsal_location'),
-            'note' => $request->input('update_rehearsal_note'),
+            'id' => $request->input('update-rehearsal-id'),
+            'time' => $request->input('update-rehearsal-time'),
+            'location' => $request->input('update-rehearsal-location'),
+            'note' => $request->input('update-rehearsal-note'),
         ]);
 
         $this->rehearsalService->updateRehearsal($this->rehearsal);

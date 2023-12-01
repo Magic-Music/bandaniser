@@ -18,13 +18,13 @@ class GigController extends Controller
     public function create(Request $request)
     {
         $this->gig->set([
-            'venue_id' => $request->input('create_venue'),
-            'agency_id' => $request->input('create_agency') ?: null,
+            'venue_id' => $request->input('create-venue'),
+            'agency_id' => $request->input('create-agency') ?: null,
             'date' => $request->input('date'),
-            'price' => $request->input('create_price'),
-            'confirmed' => $request->boolean('create_confirmed'),
-            'arrival' => $request->input('create_arrival'),
-            'note' => $request->input('create_gig_note'),
+            'price' => $request->input('create-price'),
+            'confirmed' => $request->boolean('create-confirmed'),
+            'arrival' => $request->input('create-arrival'),
+            'note' => $request->input('create-gig-note'),
         ]);
 
         $this->gigService->createGig($this->gig);
@@ -35,11 +35,11 @@ class GigController extends Controller
     public function update(Request $request)
     {
         $this->gig->set([
-            'id' => $request->input('update_gig_id'),
-            'price' => $request->input('update_gig_price'),
-            'confirmed' => $request->boolean('update_gig_confirmed'),
-            'arrival' => $request->input('update_gig_arrival'),
-            'note' => $request->input('update_gig_note'),
+            'id' => $request->input('update-gig-id'),
+            'price' => $request->input('update-gig-price'),
+            'confirmed' => $request->boolean('update-gig-confirmed'),
+            'arrival' => $request->input('update-gig-arrival'),
+            'note' => $request->input('update-gig-note'),
         ]);
 
         $this->gigService->updateGig($this->gig);

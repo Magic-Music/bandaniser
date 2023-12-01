@@ -30,7 +30,7 @@ export class ManageEvents {
     createGig() {
         $('#createModal').modal('hide')
 
-        axios.post(`/api/gig/create`, this.getFormValues('create_gig_form'))
+        axios.post(`/api/gig/create`, this.getFormValues('create-gig-form'))
             .then((response) => {
                 this.updateCalendar(response.data)
             })
@@ -39,7 +39,7 @@ export class ManageEvents {
     updateGig() {
         $('#gigModal').modal('hide')
 
-        axios.patch(`/api/gig/update`, this.getFormValues('update_gig_form'))
+        axios.patch(`/api/gig/update`, this.getFormValues('update-gig-form'))
             .then((response) => {
                 this.updateCalendar(response.data)
             })
@@ -57,7 +57,7 @@ export class ManageEvents {
     createAvailability() {
         $('#createModal').modal('hide')
 
-        axios.post(`/api/availability/create`, this.getFormValues('create_availability_form'))
+        axios.post(`/api/availability/create`, this.getFormValues('create-availability-form'))
             .then((response) => {
                 this.updateCalendar(response.data)
             })
@@ -66,7 +66,7 @@ export class ManageEvents {
     updateAvailability() {
         $('#availabilityModal').modal('hide')
 
-        axios.patch(`/api/availability/update`, this.getFormValues('update_availability_form'))
+        axios.patch(`/api/availability/update`, this.getFormValues('update-availability-form'))
             .then((response) => {
                 this.updateCalendar(response.data)
             })
@@ -84,7 +84,7 @@ export class ManageEvents {
     createRehearsal() {
         $('#createModal').modal('hide')
 
-        axios.post(`/api/rehearsal/create`, this.getFormValues('create_rehearsal_form'))
+        axios.post(`/api/rehearsal/create`, this.getFormValues('create-rehearsal-form'))
             .then((response) => {
                 this.updateCalendar(response.data)
             })
@@ -93,7 +93,7 @@ export class ManageEvents {
     updateRehearsal() {
         $('#rehearsalModal').modal('hide')
 
-        axios.patch(`/api/rehearsal/update`, this.getFormValues('update_rehearsal_form'))
+        axios.patch(`/api/rehearsal/update`, this.getFormValues('update-rehearsal-form'))
             .then((response) => {
                 this.updateCalendar(response.data)
             })

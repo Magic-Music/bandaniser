@@ -8,12 +8,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                    <form id="update_availability_form" onsubmit="event.preventDefault(); manageEvents.updateAvailability(); return false;">
+                    <form id="update-availability-form" onsubmit="event.preventDefault(); manageEvents.updateAvailability(); return false;">
                         <div class="form-group">
-                            <label for="update_availability_note">Note</label>
-                            <input type="text" id="update_availability_note" name="update_availability_note" placeholder="[optional details]" class="form-control">
+                            <label for="update-availability-note">Note</label>
+                            <input type="text" id="update-availability-note" name="update-availability-note" placeholder="[optional details]" class="form-control">
                         </div>
-                        <input type="hidden" id="update_availability_id" name="update_availability_id" value="">
+                        <input type="hidden" id="update-availability-id" name="update-availability-id" value="">
                         <button type="submit" class="btn btn-sm btn-primary">Update Availability</button>
                     </form>
             </div>

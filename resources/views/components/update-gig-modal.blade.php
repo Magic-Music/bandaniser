@@ -8,24 +8,24 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="update_gig_form" onsubmit="event.preventDefault(); manageEvents.updateGig(); return false;">
+                <form id="update-gig-form" onsubmit="event.preventDefault(); manageEvents.updateGig(); return false;">
                     <div class="form-group">
-                        <label for="update_gig_arrival">Arrival time</label>
-                        <input type="time" id="update_gig_arrival" name="update_gig_arrival" placeholder="e.g. 19:00" class="form-control">
+                        <label for="update-gig-arrival">Arrival time</label>
+                        <input type="time" id="update-gig-arrival" name="update-gig-arrival" placeholder="e.g. 19:00" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="update_gig_price">Fee</label>
-                        <input type="number" id="update_gig_price" name="update_gig_price" placeholder="e.g. 1000" class="form-control">
+                        <label for="update-gig-price">Fee</label>
+                        <input type="number" id="update-gig-price" name="update-gig-price" placeholder="e.g. 1000" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="update_gig_note">Note</label>
-                        <input type="text" id="update_gig_note" name="update_gig_note" placeholder="[optional details]" class="form-control">
+                        <label for="update-gig-note">Note</label>
+                        <input type="text" id="update-gig-note" name="update-gig-note" placeholder="[optional details]" class="form-control">
                     </div>
                     <div class="form-group" id="gig_confirmed">
-                        <label for="update_gig_confirmed">Confirmed?</label>
-                        <input type="checkbox" id="update_gig_confirmed" name="update_gig_confirmed" class="form-control">
+                        <label for="update-gig-confirmed">Confirmed?</label>
+                        <input type="checkbox" id="update-gig-confirmed" name="update-gig-confirmed" class="form-control">
                     </div>
-                    <input type="hidden" id="update_gig_id" name="update_gig_id" value="">
+                    <input type="hidden" id="update-gig-id" name="update-gig-id" value="">
                     <button type="submit" class="btn btn-sm btn-primary">Update Gig</button>
                 </form>
             </div>
