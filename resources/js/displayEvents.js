@@ -21,10 +21,10 @@ export class DisplayEvents {
             html += `<div class="card">
                         <div class="card-header d-flex ${gig.confirmed ? 'bg-gig' : 'bg-enquiry'}">
                             <div class="flex-grow-1">${gig.confirmed ? 'Gig' : 'Enquiry'} - ${gig.venue.name}</div>
-                             <div onclick="updateEvents.showUpdateGigModal(${gig}')">
+                             <div class="btn-icon" data-toggle="modal" data-target="#gigModal" onclick="updateEvents.showUpdateGigModal(${gig}')">
                                  <img width=22px height=22px src="/images/pencil.svg">
                              </div>
-                             <div onclick="manageEvents.deleteGig(${gig.id}, '${gig.date}')">
+                             <div class="btn-icon" onclick="manageEvents.deleteGig(${gig.id}, '${gig.date}')">
                                  <img width=28px height=28px src="/images/bin.svg">
                              </div>
                         </div>
@@ -48,10 +48,10 @@ export class DisplayEvents {
             html += `<div class="card">
                         <div class="card-header bg-rehearsal d-flex align-items-start">
                              <div class="flex-grow-1">Rehearsal - ${rehearsal.time}</div>
-                             <div data-toggle="modal" data-target="availabilityModal" onclick="updateEvents.showUpdateRehearsalModal('${rehearsal}')">
+                             <div data-toggle="modal" data-target="#rehearsalModal" onclick="updateEvents.showUpdateRehearsalModal('${rehearsal}')">
                                  <img width=22px height=22px src="/images/pencil.svg">
                              </div>
-                             <div onclick="manageEvents.deleteRehearsal(${rehearsal.id}, '${rehearsal.date}')">
+                             <div class="btn-icon" onclick="manageEvents.deleteRehearsal(${rehearsal.id}, '${rehearsal.date}')">
                                  <img width=28px height=28px src="/images/bin.svg">
                              </div>
                         </div>
@@ -78,10 +78,10 @@ export class DisplayEvents {
             availability.forEach((unavailable) => {
                 html += `<div class="d-flex">
                             <div class="flex-grow-1">${unavailable.member.name}</div>
-                             <div onclick="updateEvents.showUpdateAvailabilityModal('${unavailable.date}', ${unavailable.id})">
+                             <div data-toggle="modal" data-target="#availabilityModal" class="btn-icon" onclick="updateEvents.showUpdateAvailabilityModal(${unavailable.id})">
                                  <img width=22px height=22px src="/images/pencil.svg">
                              </div>
-                             <div onclick="manageEvents.deleteAvailability(${unavailable.id}, '${unavailable.date}')">
+                             <div class="btn-icon" onclick="manageEvents.deleteAvailability(${unavailable.id}, '${unavailable.date}')">
                                  <img width=28px height=28px src="/images/bin.svg">
                              </div>
                         </div>

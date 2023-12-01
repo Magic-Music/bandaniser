@@ -10,6 +10,10 @@ window.elValue = (id) => {
     return el(id).value
 }
 
+window.elUpdateValue = (id, value) => {
+    el(id).value = value
+}
+
 window.getByClass = (className) => {
     return document.querySelectorAll('.' + className)
 }

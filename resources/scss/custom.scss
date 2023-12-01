@@ -35,3 +35,17 @@ $body-bg: #dbdbff;
 .selected-day {
     background-color: #a2b8c7;
 }
+
+.btn-icon:hover {
+    cursor: pointer;
+    border: 1px solid #888;
+    border-radius: 2px;
+    margin: -1px;
+}
+
+.btn-icon:active {
+    cursor: pointer;
+    border: 2px inset;
+    border-radius: 2px;
+    margin: -2px;
+}

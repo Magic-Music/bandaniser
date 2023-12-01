@@ -4,6 +4,10 @@ export class ManageEvents {
         this.displayDate = ''
     }
 
+    setDate(date) {
+        this.date = date
+    }
+
     open(date) {
         this.hideForms()
         this.date = date
@@ -25,7 +29,7 @@ export class ManageEvents {
     createGig() {
         $('#createModal').modal('hide')
 
-        axios.post(`/api/gig/create`, this.getFormValues('gig'))
+        axios.post(`/api/gig/create`, this.getFormValues('create_gig_form'))
             .then((response) => {
                 this.updateCalendar(response.data)
             })
@@ -43,7 +47,16 @@ export class ManageEvents {
     createAvailability() {
         $('#createModal').modal('hide')
 
-        axios.post(`/api/availability/create`, this.getFormValues('availability'))
+        axios.post(`/api/availability/create`, this.getFormValues('create_availability_form'))
+            .then((response) => {
+                this.updateCalendar(response.data)
+            })
+    }
+
+    updateAvailability() {
+        $('#availabilityModal').modal('hide')
+
+        axios.patch(`/api/availability/update`, this.getFormValues('update_availability_form'))
             .then((response) => {
                 this.updateCalendar(response.data)
             })
@@ -61,7 +74,7 @@ export class ManageEvents {
     createRehearsal() {
         $('#createModal').modal('hide')
 
-        axios.post(`/api/rehearsal/create`, this.getFormValues('rehearsal'))
+        axios.post(`/api/rehearsal/create`, this.getFormValues('create_rehearsal_form'))
             .then((response) => {
                 this.updateCalendar(response.data)
             })
@@ -77,7 +90,7 @@ export class ManageEvents {
     }
 
     getFormValues(formId) {
-        let formData = new FormData(el('create_' + formId + '_form'))
+        let formData = new FormData(el(formId))
         let formObject = Object.fromEntries(formData.entries());
         formObject['date'] = this.date
 

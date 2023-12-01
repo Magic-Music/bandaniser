@@ -5,7 +5,7 @@
     style="flex: 1 1 0; "
     @if ((string)$dateNumber != "")
         id="date_{{ $dateNumber }}"
-        onClick="displayEvents.showEvents({{ $dateNumber }});"
+        onClick="displayEvents.showEvents({{ $dateNumber }}); manageEvents.setDate('{{ $year }}-{{ $month }}-{{ $dateNumber }}')"
     @endif
 >
     <div class="px-1">

@@ -31,6 +31,12 @@ class AvailabilityService
         }
     }
 
+    public function updateAvailability(int $id, string $note): void
+    {
+        Availability::where('id', $id)
+            ->update(['note' => $note]);
+    }
+
     public function deleteAvailability(int $id): void
     {
         Availability::destroy($id);
