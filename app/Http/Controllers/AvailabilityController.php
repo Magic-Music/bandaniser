@@ -26,13 +26,13 @@ class AvailabilityController extends Controller
 
         $this->availabilityService->createAvailability($this->availability);
 
-        return $this->responseDataService->getResponseData($this->availability->date);
+        return $this->responseDataService->getRenderedCalendarAndEventData($this->availability->date);
     }
 
     public function delete($id, $date)
     {
         $this->availabilityService->deleteAvailability($id);
 
-        return $this->responseDataService->getResponseData($date);
+        return $this->responseDataService->getRenderedCalendarAndEventData($date);
     }
 }

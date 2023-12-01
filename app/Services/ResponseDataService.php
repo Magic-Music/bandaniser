@@ -4,11 +4,11 @@ namespace App\Services;
 
 class ResponseDataService
 {
-    public function __construct(private DateAggregationService $dateAggregationService) {}
+    public function __construct(private CalendarService $calendarService) {}
 
-    public function getResponseData($date)
+    public function getRenderedCalendarAndEventData(string $dateYmd): array
     {
-        $responseData = $this->dateAggregationService->getAllAggregatedData($date);
+        $responseData = $this->calendarService->getCalendarAndEventData($dateYmd);
 
         return [
             'html' => view('layouts.calendar', $responseData['calendar'])->render(),

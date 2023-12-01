@@ -48,7 +48,7 @@ export class DisplayEvents {
             html += `<div class="card">
                         <div class="card-header bg-rehearsal d-flex align-items-start">
                              <div class="flex-grow-1">Rehearsal - ${rehearsal.time}</div>
-                             <div onclick="updateEvents.showUpdateRehearsalModal(${rehearsal})">
+                             <div data-toggle="modal" data-target="availabilityModal" onclick="updateEvents.showUpdateRehearsalModal('${rehearsal}')">
                                  <img width=22px height=22px src="/images/pencil.svg">
                              </div>
                              <div onclick="manageEvents.deleteRehearsal(${rehearsal.id}, '${rehearsal.date}')">
@@ -75,17 +75,17 @@ export class DisplayEvents {
                         </div>
                         <div class="card-body">`
 
-            availability.forEach((person) => {
+            availability.forEach((unavailable) => {
                 html += `<div class="d-flex">
-                            <div class="flex-grow-1">${person.member.name}</div>
-                             <div onclick="updateEvents.showUpdateAvailabilityModal(${person})">
+                            <div class="flex-grow-1">${unavailable.member.name}</div>
+                             <div onclick="updateEvents.showUpdateAvailabilityModal('${unavailable.date}', ${unavailable.id})">
                                  <img width=22px height=22px src="/images/pencil.svg">
                              </div>
-                             <div onclick="manageEvents.deleteAvailability(${person.id}, '${person.date}')">
+                             <div onclick="manageEvents.deleteAvailability(${unavailable.id}, '${unavailable.date}')">
                                  <img width=28px height=28px src="/images/bin.svg">
                              </div>
                         </div>
-                        ${person.note ? '<i>(' + person.note + ')</i><br><br>' : '<br>'}`
+                        ${unavailable.note ? '<i>(' + unavailable.note + ')</i><br><br>' : '<br>'}`
             })
             html += '</div></div>'
         }

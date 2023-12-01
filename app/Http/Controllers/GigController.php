@@ -29,13 +29,13 @@ class GigController extends Controller
 
         $this->gigService->createGig($this->gig);
 
-        return $this->responseDataService->getResponseData($this->gig->date);
+        return $this->responseDataService->getRenderedCalendarAndEventData($this->gig->date);
     }
 
     public function delete($id, $date)
     {
         $this->gigService->deleteGig($id);
 
-        return $this->responseDataService->getResponseData($date);
+        return $this->responseDataService->getRenderedCalendarAndEventData($date);
     }
 }

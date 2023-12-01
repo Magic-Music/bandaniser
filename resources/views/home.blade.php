@@ -32,6 +32,8 @@
         <x-month :$year :$month :$gigs :$availability :$rehearsals/>
     </div>
     <x-create-modal />
+    <x-update-availability-modal />
+    
 @endsection
 
 @section('script')

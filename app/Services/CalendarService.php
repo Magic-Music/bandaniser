@@ -7,7 +7,7 @@ use App\Models\Gig;
 use App\Models\Rehearsal;
 use \DateTime;
 
-class DateAggregationService
+class CalendarService
 {
     private int $year;
     private int $month;
@@ -21,11 +21,11 @@ class DateAggregationService
         private AvailabilityService $availabilityService,
     ) {}
 
-    public function getAllAggregatedData(string $date): array
+    public function getCalendarAndEventData(string $dateYmd): array
     {
-        $dateParts = $this->getDateParts($date);
-        $calendarData = $this->getAggregatedEventData(...$dateParts);
-        $eventData = $this->getAggregatedDateData(...$dateParts);
+        $dateParts = $this->getDateParts($dateYmd);
+        $calendarData = $this->getEventsForMonth(...$dateParts);
+        $eventData = $this->getEventsCollatedByDate(...$dateParts);
 
         return [
             'calendar' => $calendarData,
@@ -33,7 +33,7 @@ class DateAggregationService
         ];
     }
 
-    public function getAggregatedEventData(int $year, int $month): array
+    public function getEventsForMonth(int $year, int $month): array
     {
         $this->year = $year;
         $this->month = $month;
@@ -51,7 +51,7 @@ class DateAggregationService
         return $dates;
     }
 
-    public function getAggregatedDateData(int $year, int $month): array
+    public function getEventsCollatedByDate(int $year, int $month): array
     {
         $this->year = $year;
         $this->month = $month;

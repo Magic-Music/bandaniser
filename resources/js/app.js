@@ -12,6 +12,9 @@ window.displayEvents = new DisplayEvents
 import {ManageEvents} from "./manageEvents.js";
 window.manageEvents = new ManageEvents
 
+import {UpdateEvents} from "./updateEvents.js";
+window.updateEvents = new UpdateEvents
+
 import.meta.glob([
     '../images/**',
 ]);

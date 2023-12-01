@@ -15,7 +15,7 @@ window.getByClass = (className) => {
 }
 
 window.addClass = (element, className) => {
-    el(element).classList.add(className)
+    el(element)?.classList?.add(className)
 }
 
 window.removeClass = (element, className) => {

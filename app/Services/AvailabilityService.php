@@ -13,7 +13,8 @@ class AvailabilityService
     {
         return Availability::whereYear('date', '=', $year)
             ->whereMonth('date', '=', $month)
-            ->with('member')
+            ->with('member:id,name')
+            ->select('id', 'member_id', 'date', 'note')
             ->get()
             ->toArray();
     }

@@ -99,6 +99,7 @@ export class ManageEvents {
     }
 
     getDayFromDate(date) {
+        console.log(`getDayFromDate ${date}`)
         return date.match(/\d+/g)[2]
     }
 }

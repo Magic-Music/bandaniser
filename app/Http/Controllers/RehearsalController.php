@@ -26,13 +26,13 @@ class RehearsalController extends Controller
 
         $this->rehearsalService->createRehearsal($this->rehearsal);
 
-        return $this->responseDataService->getResponseData($this->rehearsal->date);
+        return $this->responseDataService->getRenderedCalendarAndEventData($this->rehearsal->date);
     }
 
     public function delete($id, $date)
     {
         $this->rehearsalService->deleteRehearsal($id);
 
-        return $this->responseDataService->getResponseData($date);
+        return $this->responseDataService->getRenderedCalendarAndEventData($date);
     }
 }
