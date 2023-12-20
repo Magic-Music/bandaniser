@@ -33,7 +33,7 @@ class AvailabilityController extends Controller
     {
         $this->availabilityService->updateAvailability(
             $request->input('update-availability-id'),
-            $request->input('update-availability-note')
+            $request->input('update-availability-note') ?? ''
         );
 
         return $this->responseDataService->getRenderedCalendarAndEventData($request->input('date'));

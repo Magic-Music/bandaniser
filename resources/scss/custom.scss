@@ -13,6 +13,7 @@ $theme-colors: (
 $body-bg: #dbdbff;
 
 @import "~bootstrap/scss/bootstrap";
+@import "tabulator-tables";
 
 .seven-cols {
     width: 14.285714285714285714285714285714%;

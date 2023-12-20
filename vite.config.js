@@ -7,12 +7,13 @@ export default defineConfig({
         laravel({
             input: ['resources/scss/app.scss', 'resources/js/app.js'],
             refresh: true,
-        }),
+        })
     ],
     resolve: {
         alias: {
             '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
-            '~jquery': path.resolve(__dirname, 'node_modules/jquery')
+            '~jquery': path.resolve(__dirname, 'node_modules/jquery'),
+            '~tabulator-tables': path.resolve(__dirname, 'node_modules/tabulator-tables')
         }
     }
 });

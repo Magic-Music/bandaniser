@@ -32,14 +32,15 @@
         <x-month :$year :$month :$gigs :$availability :$rehearsals/>
     </div>
     <x-create-modal />
-    <x-update-availability-modal />
-    <x-update-rehearsal-modal />
-    <x-update-gig-modal />
-
+    @include('modals.update-availability')
+    @include('modals.update-rehearsal')
+    @include('modals.update-gig')
 @endsection
 
 @section('script')
-    window.onload = () => {
-        calendar.storeEvents({{ $year }}, {{ $month }})
-    }
+    <script>
+        window.onload = () => {
+            calendar.storeEvents({{ $year }}, {{ $month }})
+        }
+    </script>
 @endsection

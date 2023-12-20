@@ -6,15 +6,16 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class NavItem extends Component
+class Modal extends Component
 {
     public function __construct(
-        public string $slug,
-        public ?string $href = null,
+        public string $id,
+        public string $title,
+        public ?string $headerClass = null,
     ) {}
 
     public function render(): View|Closure|string
     {
-        return view('components.nav-item');
+        return view('components.modal');
     }
 }

@@ -8,16 +8,14 @@
 
         <title>Bandaniser</title>
 
-        <script>
-            @yield('script')
-        </script>
+        @yield('script')
     </head>
 
     <body class="bg-body vh-100 w-100 d-flex flex-column">
 
-        <x-navbar active="home">
-            <x-nav-item slug="home">Home</x-nav-item>
-            <x-nav-item slug="members">Members</x-nav-item>
+        <x-navbar active="{{ $active ?? 'home' }}">
+            <x-nav-item slug="home" href="/">Home</x-nav-item>
+            <x-nav-item slug="members" href="/members">Members</x-nav-item>
             <x-nav-item slug="gigs">Gigs</x-nav-item>
             <x-nav-item slug="venues">Venues</x-nav-item>
             <x-nav-item slug="agencies">Agencies</x-nav-item>
@@ -25,9 +23,11 @@
 
         <div class="flex-grow-1 h-100">
             <div class="d-flex flex-grow-1 flex-row h-100">
-                <div id="event-container" class="w-25 h-100 bg-events border-right border-dark">
-                    @yield('sidebar')
-                </div>
+                @hasSection('sidebar')
+                    <div class="w-25 h-100 bg-events border-right border-dark">
+                        @yield('sidebar')
+                    </div>
+                @endif
 
                 <div id="calendar-container" class="d-flex flex-column flex-grow-1 h-100">
                     @yield('content')

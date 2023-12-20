@@ -6,15 +6,16 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class NavItem extends Component
+class Form extends Component
 {
     public function __construct(
-        public string $slug,
-        public ?string $href = null,
+        public string $id,
+        public string $submit,
+        public string $submitText = "Submit",
     ) {}
 
     public function render(): View|Closure|string
     {
-        return view('components.nav-item');
+        return view('components.form');
     }
 }

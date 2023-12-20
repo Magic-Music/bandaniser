@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\MemberController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [CalendarController::class, 'index']);
 
-Route::get('members', function () {
-    return view('members');
-});
+Route::get('members', [MemberController::class, 'index']);
 
 Route::get('gigs', function () {
     return view('gigs');

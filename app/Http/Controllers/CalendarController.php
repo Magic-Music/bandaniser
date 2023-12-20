@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\CalendarService;
 use App\Services\ResponseDataService;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class CalendarController extends Controller
 {
@@ -14,7 +15,7 @@ class CalendarController extends Controller
     )
     {}
 
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $dates = $this->calendarService->getEventsForMonth(
             $request->year ?? date('Y'),
@@ -24,7 +25,7 @@ class CalendarController extends Controller
         return view('home', $dates);
     }
 
-    public function getCalendar(Request $request)
+    public function getCalendar(Request $request): array
     {
         $year = $request->year ?? date('Y');
         $month =$request->month ?? date('m');
@@ -33,7 +34,7 @@ class CalendarController extends Controller
 
     }
 
-    public function getEvents(Request $request)
+    public function getEvents(Request $request): array
     {
         $dates = $this->calendarService->getEventsCollatedByDate(
             $request->year ?? date('Y'),

@@ -24,16 +24,16 @@ export class UpdateEvents {
         elUpdateValue('update-gig-id', id)
 
         if (details.confirmed) {
-            hide('gig_confirmed')
+            hide('gig-confirmed')
+            check('update-gig-confirmed')
             addClass('modal-gig-header', 'bg-gig')
             removeClass('modal-gig-header', 'bg-enquiry')
             elUpdate('gig-status', 'gig')
         } else {
-            uncheck('update-gig-confirmed')
             removeClass('modal-gig-header', 'bg-gig')
             addClass('modal-gig-header', 'bg-enquiry')
             elUpdate('gig-status', 'provisional booking')
-            show('gig_confirmed')
+            show('gig-confirmed')
         }
     }
 }
